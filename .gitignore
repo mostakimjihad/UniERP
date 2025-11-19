@@ -1,0 +1,632 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# UniERP / Odoo specific ignores
+*.log
+*.pid
+*.bak
+*.tmp
+*.swp
+*.swo
+*~
+
+# UniERP filestore
+filestore/
+*.filestore
+
+# UniERP session data
+.sessions/
+*.session
+
+# UniERP temporary files
+tmp/
+temp/
+*.temp
+
+# Database dumps
+*.dump
+*.sql
+*.sqlc
+*.backup
+
+# Configuration files with sensitive data
+*.conf
+*.cfg
+config/
+etc/local_*
+
+# IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.atom/
+.brackets.json
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# UniERP / Odoo specific
+# Custom modules that shouldn't be committed
+custom_addons/local_modules/
+addons/custom/
+addons/local/
+
+# Test databases
+test_db*
+demo_db*
+dev_db*
+
+# Node.js dependencies and build files
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+*.tgz
+*.tar.gz
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Bower dependency directory (https://bower.io/)
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (https://www.odoo.com/documentation/15.0/developer/misc/compiling)
+*.zip
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# Odoo specific
+# Don't commit your database configuration
+odoo.conf
+.unierp.conf
+
+# Don't commit the filestore
+ir.config_parameter.csv
+
+# Don't commit the session files
+*.session
+
+# Don't commit the log files
+*.log
+
+# Don't commit the pid files
+*.pid
+
+# UniERP branding assets (should be managed separately)
+assets/branding/
+assets/logos/
+assets/custom/
+
+# Documentation build
+docs/_build/
+docs/build/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Local development
+local/
+local_*
+dev/
+dev_*
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Package files
+*.egg
+*.egg-info
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+
+# Test files
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.atom/
+.brackets.json
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# UniERP specific ignores
+# Custom addons (should be in separate repository)
+addons/custom_*
+addons/local_*
+addons/third_party_*
+
+# Configuration files with sensitive data
+etc/*.conf
+etc/*.cfg
+etc/local_*
+config/local_*
+
+# Development databases
+*.db
+*.sqlite
+*.sqlite3
+
+# File attachments and user data
+web/static/src/img/user_*
+web/static/src/js/user_*
+web/static/src/css/user_*
+
+# Generated documentation
+doc/_build/
+doc/build/
+
+# Translation compiled files
+*.mo
+# Keep .pot files for translation updates
+
+# Migration scripts (keep for reference)
+migrations/*.pyc
+migrations/*.pyo
+
+# Custom themes (should be separate)
+themes/custom_*
+themes/local_*
+
+# Security and audit files
+*.audit
+*.security
+
+# Performance profiling
+*.prof
+*.profile
+
+# Cache and optimization files
+.cache/
+*.cache
+*.pyc
+*.pyo
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Kubernetes
+k8s/secrets/
+k8s/local/
+
+# CI/CD
+.gitlab-ci.local.yml
+.github/workflows/local_*
+
+# Local configuration overrides
+odoo-bin.local
+unierp-bin.local
+
+# Development tools
+.pyre/
+.mypy_cache/
+.dmypy.json
+
+# Backup and archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Log rotation
+*.log.*
+*.log.1
+*.log.2
+*.log.3
+*.log.4
+*.log.5
+
+# Temporary upload directories
+uploads/
+temp_uploads/
+user_uploads/
+
+# Search index
+elasticsearch/
+solr/
+whoosh/
+
+# Monitoring and metrics
+metrics/
+monitoring/
+.grafana/
+.prometheus/
+
+# SSL certificates (should never be committed)
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+
+# Database backups (should be stored securely)
+backups/
+*.dump
+*.sql.backup
+*.pg_dump
+
+# Development data
+data/
+static/src/user_data/
+custom_data/
+
+# Third-party libraries (should be managed via package management)
+libs/
+vendor/
+third_party/
+
+# Build artifacts
+*.js.map
+*.css.map
+source-maps/
+
+# Testing artifacts
+test-results/
+coverage-reports/
+test-reports/
+
+# Local scripts and utilities
+scripts/local_*
+tools/local_*
+utils/local_*
+
+# Configuration overrides
+local_settings.py
+dev_settings.py
+test_settings.py
+
+# Environment-specific files
+development.py
+production.py
+staging.py
+testing.py
+
+# Secret keys and tokens
+.secrets
+*.key
+*.token
+*.pem
+*.p12
+*.jks
+
+# Database connection strings
+database.ini
+db.conf
+db_config.py
+
+# API keys and credentials
+api_keys.py
+credentials.py
+.secrets.json
+config.json
+
+# SSL and security certificates
+*.crt
+*.key
+*.pem
+*.p12
+*.jks
+*.ca-bundle
+
+# Local environment files
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Package manager locks (keep these!)
+# package-lock.json
+# yarn.lock
+# Pipfile.lock
+
+# But exclude local modifications
+package-lock.json.local
+yarn.lock.local
+Pipfile.lock.local
+
+# UniERP specific module ignores
+# Custom modules should be in separate repos
+addons/custom_*/
+addons/local_*/
+addons/third_party_*/
+
+# Module development
+*.module.zip
+*.module.tar.gz
+__manifest__.py.local
+
+# Translation files (keep source, exclude compiled)
+*.mo
+# Keep .pot files for translation updates
+
+# Report templates
+reports/custom_*/
+reports/local_*/
+
+# Web assets
+web/static/src/custom_*/
+web/static/src/local_*/
+
+# Email templates
+email_templates/custom_*/
+email_templates/local_*/
+
+# Data files
+data/custom_*/
+data/local_*/
+
+# Demo data (should be in separate repo)
+demo_data/
+sample_data/
+
+# Test data and fixtures
+tests/fixtures/local_*/
+tests/data/custom_*/
+
+# Performance benchmarks
+benchmarks/local_*/
+performance/local_*/
+
+# Security configurations
+security/local_*/
+firewall/local_*/
+
+# Monitoring configurations
+monitoring/local_*/
+alerts/local_*/
+
+# Backup configurations
+backup/local_*/
+restore/local_*/
+
+# Deployment configurations
+deploy/local_*/
+ansible/local_*/
+terraform/local_*/
+
+# Container configurations
+docker/local_*/
+kubernetes/local_*/
+
+# Documentation
+docs/local_*/
+wiki/local_*/
+
+# Scripts and utilities
+scripts/local_*/
+tools/local_*/
+utils/local_*/
+
+# Configuration files
+config/local_*/
+settings/local_*/
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Cache
+.cache/
+*.cache
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+.atom/
+.brackets/
+
+# OS files
+.DS_Store
+Thumbs.db
