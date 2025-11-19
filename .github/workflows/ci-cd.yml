@@ -1,0 +1,697 @@
+name: UniERP CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop, 'release/*', 'hotfix/*' ]
+  pull_request:
+    branches: [ main, develop, 'feature/*', 'hotfix/*' ]
+  release:
+    types: [ published ]
+
+env:
+  PYTHON_VERSION: '3.10'
+  NODE_VERSION: '18'
+  POSTGRES_VERSION: '14'
+
+jobs:
+  # Code Quality and Linting
+  lint:
+    name: Code Quality & Linting
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
+    
+    - name: Install Node.js dependencies
+      run: |
+        npm install -g less less-plugin-clean-css
+        if [ -f "package.json" ]; then npm ci; fi
+    
+    - name: Check Python code style
+      run: |
+        echo "Running Black code formatter check..."
+        black --check --diff odoo/ addons/
+        
+        echo "Running isort import sorting check..."
+        isort --check-only --diff odoo/ addons/
+        
+        echo "Running flake8 linter..."
+        flake8 odoo/ addons/ --max-line-length=120 --extend-ignore=E203,W503 --show-source --statistics
+    
+    - name: Check Python code quality
+      run: |
+        echo "Running Pylint code analysis..."
+        pylint --output-format=text --score=no odoo/ --disable=C0114,C0115,E1101,W0613
+    
+    - name: Check JavaScript/SCSS
+      run: |
+        echo "Checking JavaScript files..."
+        find addons/ -name "*.js" -exec echo "Checking {}" \; -exec jshint {} \; || true
+        
+        echo "Checking SCSS files..."
+        find addons/ -name "*.scss" -exec echo "Checking {}" \; -exec stylelint {} \; || true
+    
+    - name: Check for Odoo branding
+      run: |
+        echo "Checking for Odoo branding references..."
+        if grep -r -i "odoo\|Odoo\|ODOO" --include="*.py" --include="*.js" --include="*.xml" --include="*.html" odoo/ addons/; then
+          echo "❌ ERROR: Found Odoo branding references in code"
+          echo "Please replace all Odoo references with UniERP branding"
+          exit 1
+        else
+          echo "✅ No Odoo branding references found"
+        fi
+    
+    - name: Check manifest files
+      run: |
+        echo "Validating module manifests..."
+        python3 .github/scripts/check_manifests.py
+
+    - name: Security scan with Bandit
+      run: |
+        echo "Running security vulnerability scan..."
+        bandit -r odoo/ -f json -o bandit-report.json
+
+        echo "Security scan results:"
+        if [ -f bandit-report.json ]; then
+          ISSUE_COUNT=$(jq '.results | length' bandit-report.json)
+          echo "Found $ISSUE_COUNT issues"
+          if [ "$ISSUE_COUNT" -gt 0 ]; then
+            echo "⚠️ Security issues found - check bandit-report.json"
+          else
+            echo "✅ No security issues found"
+          fi
+        fi
+
+    
+    - name: Upload security scan results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: security-scan-results
+        path: bandit-report.json
+        retention-days: 30
+
+  # Unit and Integration Tests
+  test:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_PASSWORD: unierp_test
+          POSTGRES_USER: unierp
+          POSTGRES_DB: unierp_test
+        options: >-
+          --health-cmd pg_isready -U unierp -d unierp_test
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11']
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          postgresql-client \
+          libsasl2-dev \
+          libldap2-dev \
+          libpq-dev \
+          libxml2-dev \
+          libxslt1-dev \
+          libjpeg-dev \
+          libzip-dev \
+          libssl-dev \
+          nodejs \
+          npm
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-test.txt
+        pip install pytest pytest-cov pytest-mock pytest-html
+    
+    - name: Install Node.js dependencies
+      run: |
+        npm install -g less less-plugin-clean-css
+        if [ -f "package.json" ]; then npm ci; fi
+    
+    - name: Cache Odoo addons
+      uses: actions/cache@v3
+      with:
+        path: ~/.local/share/odoo-addons
+        key: ${{ runner.os }}-odoo-addons-${{ hashFiles('addons/**/__manifest__.py') }}
+    
+    - name: Create test configuration
+      run: |
+        mkdir -p ~/.config/unierp
+        cat > ~/.config/unierp/unierp.conf << EOF
+        [options]
+        db_host = localhost
+        db_port = 5432
+        db_user = unierp
+        db_password = unierp_test
+        db_maxconn = 5
+        addons_path = ${{ github.workspace }}/addons
+        data_dir = /tmp/unierp-data
+        logfile = /tmp/unierp.log
+        without_demo = all
+        server_wide_modules = base,web
+        workers = 0
+        EOF
+    
+    - name: Initialize test database
+      run: |
+        createdb -h localhost -U unierp unierp_test || true
+        psql -h localhost -U unierp -d unierp_test -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";" || true
+    
+    - name: Run database migrations
+      run: |
+        ${{ github.workspace }}/odoo-bin \
+          -c ~/.config/unierp/unierp.conf \
+          -d unierp_test \
+          -i base \
+          --stop-after-init \
+          --without-demo=all
+    
+    - name: Run unit tests
+      run: |
+        echo "Running unit tests with coverage..."
+        ${{ github.workspace }}/odoo-bin \
+          -c ~/.config/unierp/unierp.conf \
+          -d unierp_test \
+          --test-enable \
+          --test-tags=TestUnit \
+          --stop-after-init \
+          --log-level=test
+    
+    - name: Run integration tests
+      run: |
+        echo "Running integration tests..."
+        ${{ github.workspace }}/odoo-bin \
+          -c ~/.config/unierp/unierp.conf \
+          -d unierp_test \
+          --test-enable \
+          --test-tags=TestIntegration \
+          --stop-after-init \
+          --log-level=test
+    
+    - name: Run UI tests
+      run: |
+        echo "Running UI tests..."
+        ${{ github.workspace }}/odoo-bin \
+          -c ~/.config/unierp/unierp.conf \
+          -d unierp_test \
+          --test-enable \
+          --test-tags=TestUI \
+          --stop-after-init \
+          --log-level=test
+    
+    - name: Generate coverage report
+      run: |
+        echo "Generating coverage report..."
+        pytest \
+          --cov=odoo \
+          --cov=addons \
+          --cov-report=xml \
+          --cov-report=html \
+          --cov-report=term \
+          tests/ \
+          --junitxml=pytest-results.xml
+    
+    - name: Upload coverage reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: coverage-reports-${{ matrix.python-version }}
+        path: |
+          htmlcov/
+          coverage.xml
+          pytest-results.xml
+        retention-days: 30
+    
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results-${{ matrix.python-version }}
+        path: pytest-results.xml
+        retention-days: 30
+    
+    - name: Comment coverage on PR
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const coverage = require('./coverage.xml').match(/line-rate="([^"]+)"/)?.[1] || '0';
+          const coveragePercent = Math.round(parseFloat(coverage) * 100);
+          
+          if (coveragePercent < 80) {
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `🚨 **Coverage Warning**: Current coverage is ${coveragePercent}% (minimum required: 80%)\n\nPlease add more tests to improve coverage.`
+            });
+          } else {
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `✅ **Coverage**: ${coveragePercent}% - Meets minimum requirement`
+            });
+          }
+
+  # Security Scanning
+  security:
+    name: Security Scanning
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    
+    - name: Install security scanning tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install bandit safety semgrep
+    
+    - name: Run Bandit security scan
+      run: |
+        bandit -r odoo/ -f json -o bandit-report.json
+        bandit -r addons/ -f json -o bandit-addons-report.json
+    
+    - name: Run Safety dependency check
+      run: |
+        safety check --json --output safety-report.json
+        safety check --json --output safety-addons-report.json --file addons/*/requirements.txt
+    
+    - name: Run Semgrep security scan
+      uses: returntocorp/semgrep-action@v1
+      with:
+        config: >-
+          p/security-audit
+          p/secrets
+          p/owasp-top-ten
+        publishSarif: true
+    
+    - name: Generate security report
+      run: |
+        echo "# Security Scan Report" > security-summary.md
+        echo "## Bandit Results" >> security-summary.md
+        if [ -f bandit-report.json ]; then
+          echo "- Main codebase: $(cat bandit-report.json | jq '.results | length') issues found" >> security-summary.md
+        fi
+        if [ -f bandit-addons-report.json ]; then
+          echo "- Addons: $(cat bandit-addons-report.json | jq '.results | length') issues found" >> security-summary.md
+        fi
+        echo "## Safety Results" >> security-summary.md
+        if [ -f safety-report.json ]; then
+          echo "- Dependencies: $(cat safety-report.json | jq '.vulnerabilities | length') vulnerabilities found" >> security-summary.md
+        fi
+        if [ -f safety-addons-report.json ]; then
+          echo "- Addons dependencies: $(cat safety-addons-report.json | jq '.vulnerabilities | length') vulnerabilities found" >> security-summary.md
+        fi
+    
+    - name: Upload security reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: security-reports
+        path: |
+          bandit-report.json
+          bandit-addons-report.json
+          safety-report.json
+          safety-addons-report.json
+          security-summary.md
+        retention-days: 30
+
+  # Build and Package
+  build:
+    name: Build Package
+    runs-on: ubuntu-latest
+    needs: [lint, test, security]
+    timeout-minutes: 30
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    
+    - name: Install build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build setuptools wheel twine
+    
+    - name: Build package
+      run: |
+        # Update version from git tag
+        if [[ "${{ github.ref_type }}" == "tag" ]]; then
+          VERSION="${{ github.ref_name }}"
+        else
+          VERSION="latest"
+        fi
+        
+        echo "Building UniERP package version: $VERSION"
+        
+        # Create version file
+        echo "__version__ = '$VERSION'" > odoo/release_info.py
+        
+        # Build source distribution
+        python setup.py sdist
+        
+        # Build wheel distribution
+        python setup.py bdist_wheel
+        
+        # Create tarball for deployment
+        tar -czf unierp-$VERSION.tar.gz \
+          --exclude=.git \
+          --exclude=__pycache__ \
+          --exclude=*.pyc \
+          --exclude=.DS_Store \
+          --exclude=*.log \
+          .
+    
+    - name: Generate build checksums
+      run: |
+        cd dist
+        sha256sum * > SHA256SUMS
+        sha512sum * > SHA512SUMS
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: unierp-package
+        path: |
+          dist/
+          unierp-*.tar.gz
+          SHA256SUMS
+          SHA512SUMS
+        retention-days: 90
+
+  # Deploy to Staging
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/develop'
+    environment: staging
+    timeout-minutes: 20
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Deploy to staging server
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.STAGING_HOST }}
+        username: ${{ secrets.STAGING_USER }}
+        key: ${{ secrets.STAGING_SSH_KEY }}
+        script: |
+          cd /opt/unierp
+          
+          # Backup current version
+          sudo systemctl stop unierp
+          sudo -u postgres pg_dump unierp_staging > /opt/backups/staging-backup-$(date +%Y%m%d-%H%M%S).sql
+          
+          # Pull latest changes
+          git fetch origin
+          git checkout ${{ github.sha }}
+          git pull origin develop
+          
+          # Update dependencies
+          sudo -H pip3 install -r requirements.txt --upgrade
+          
+          # Run database migrations
+          sudo -u unierp /opt/unierp/unierp-bin -c /etc/unierp/unierp.conf -d unierp_staging -u all --stop-after-init
+          
+          # Clear caches
+          sudo rm -rf /opt/unierp/filestore/*
+          sudo rm -rf /tmp/unierp-*
+          
+          # Restart services
+          sudo systemctl start unierp
+          sudo systemctl restart nginx
+          
+          echo "✅ Deployment to staging completed successfully"
+    
+    - name: Run smoke tests
+      run: |
+        echo "Running smoke tests on staging..."
+        sleep 30  # Wait for services to start
+        
+        # Test basic functionality
+        curl -f https://staging.unierp.uslbd.com/web/login || exit 1
+        curl -f https://staging.unierp.uslbd.com/jsonrpc || exit 1
+        
+        echo "✅ Smoke tests passed"
+    
+    - name: Notify deployment
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.repos.createDeployment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: context.sha,
+            environment: 'staging',
+            description: 'Deploy to staging environment'
+          });
+
+  # Deploy to Production
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    timeout-minutes: 30
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Create production deployment
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.repos.createDeployment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: context.sha,
+            environment: 'production',
+            description: 'Deploy to production environment',
+            required_contexts: ['approved-for-production']
+          });
+    
+    - name: Deploy to production server
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.PRODUCTION_HOST }}
+        username: ${{ secrets.PRODUCTION_USER }}
+        key: ${{ secrets.PRODUCTION_SSH_KEY }}
+        script: |
+          cd /opt/unierp
+          
+          # Backup production
+          sudo systemctl stop unierp
+          sudo -u postgres pg_dump unierp_prod > /opt/backups/prod-backup-$(date +%Y%m%d-%H%M%S).sql
+          
+          # Pull latest changes
+          git fetch origin
+          git checkout ${{ github.sha }}
+          git pull origin main
+          
+          # Update dependencies
+          sudo -H pip3 install -r requirements.txt --upgrade
+          
+          # Run database migrations
+          sudo -u unierp /opt/unierp/unierp-bin -c /etc/unierp/unierp.conf -d unierp_prod -u all --stop-after-init
+          
+          # Clear caches and optimize
+          sudo rm -rf /opt/unierp/filestore/*
+          sudo rm -rf /tmp/unierp-*
+          sudo -u postgres psql unierp_prod -c "VACUUM ANALYZE;"
+          
+          # Restart services
+          sudo systemctl start unierp
+          sudo systemctl restart nginx
+          sudo systemctl restart redis-server
+          
+          echo "✅ Production deployment completed successfully"
+    
+    - name: Run production health checks
+      run: |
+        echo "Running production health checks..."
+        sleep 60  # Wait for services to stabilize
+        
+        # Test critical endpoints
+        curl -f https://erp.uslbd.com/web/login || exit 1
+        curl -f https://erp.uslbd.com/jsonrpc || exit 1
+        curl -f https://erp.uslbd.com/health || exit 1
+        
+        echo "✅ Production health checks passed"
+    
+    - name: Notify production deployment
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.repos.createDeploymentStatus({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            deployment_id: context.deploy.id,
+            state: 'success',
+            description: 'Production deployment successful'
+          });
+
+  # Release to PyPI
+  release:
+    name: Release to PyPI
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'release'
+    timeout-minutes: 20
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: unierp-package
+        path: dist/
+    
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
+        packages_dir: dist/
+
+  # Notification
+  notify:
+    name: Notify Results
+    runs-on: ubuntu-latest
+    needs: [lint, test, security, build]
+    if: always()
+    timeout-minutes: 10
+    
+    steps:
+    - name: Notify on success
+      if: success()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const workflow = context.workflow;
+          const message = `
+          ## 🚀 UniERP CI/CD Pipeline Results
+          
+          ### ✅ Successful Stages
+          - **Lint**: Code quality checks passed
+          - **Test**: All tests passed
+          - **Security**: No critical vulnerabilities found
+          - **Build**: Package created successfully
+          
+          ### 📊 Build Information
+          - **Commit**: ${{ github.sha }}
+          - **Branch**: ${{ github.ref }}
+          - **Workflow**: ${workflow}
+          - **Run ID**: ${{ github.run_id }}
+          
+          ### 🔗 Links
+          - [Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          - [Commit](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+          `;
+          
+          github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number || null,
+            body: message
+          });
+    
+    - name: Notify on failure
+      if: failure()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const workflow = context.workflow;
+          const message = `
+          ## ❌ UniERP CI/CD Pipeline Failed
+          
+          ### 🚨 Failed Stages
+          Please check the failed jobs and fix the issues.
+          
+          ### 📊 Build Information
+          - **Commit**: ${{ github.sha }}
+          - **Branch**: ${{ github.ref }}
+          - **Workflow**: ${workflow}
+          - **Run ID**: ${{ github.run_id }}
+          
+          ### 🔗 Links
+          - [Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          - [Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          `;
+          
+          github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number || null,
+            body: message
+          });
