@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![UniERP Logo](/home/jihad/Documents/DEV/UniERP/github_docs/img/UniERP.png)
+![UniERP Logo](https://github.com/mostakimjihad/UniERP/blob/master/github_docs/img/UniERP.png)
 
 **Empowering Business Excellence Through Integrated ERP Solutions**
 
