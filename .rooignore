@@ -1,0 +1,74 @@
+# Odoo 19 ignore file
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+.mypy_cache/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+/.env
+
+# Editor/IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build/dist
+dist/
+build/
+*.egg-info/
+pip-wheel-metadata/
+
+# Logs and runtime
+*.log
+logs/
+tmp/
+temp/
+sessions/
+
+# Odoo filestore and local data
+filestore/
+filestore/*
+addons/*/static/src/**/*.map
+
+# Test artifacts
+tests/report/
+pytest-results.xml
+
+# Packaging
+.egg
+
+# Misc
+.cache/
+.ropeproject/
+
+.localrc
+
+# Database dumps
+*.sql
+*.dump
+
+# Keep this file tracked
+!.rooignore
