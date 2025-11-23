@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Odoo</title>
+    <title>UniERP</title>
     <link rel="shortcut icon" href="/web/static/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/web/static/src/libs/fontawesome/css/font-awesome.css" />
     <link rel="stylesheet" href="/web/static/lib/bootstrap/dist/css/bootstrap.css" />
@@ -48,7 +48,7 @@
 
                         <t t-foreach="databases" t-as="db">
                             <div class="list-group-item d-flex align-items-center">
-                                <a t-attf-href="/odoo?db={{ db }}" class="d-block flex-grow-1">
+                                <a t-attf-href="/unierp?db={{ db }}" class="d-block flex-grow-1">
                                     <t t-if="db in incompatible_databases">
                                         <i class="icon fa fa-warning float-end text-warning" title="This database may not be compatible"></i>
                                     </t>

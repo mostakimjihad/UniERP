@@ -43,10 +43,11 @@ package.json
 .husky
 
 # various virtualenv
-# /bin/
-# /build/
-# /dist/
-# /include/
-# /lib/
-# /man/
-# /src/
+/bin/
+/build/
+/dist/
+/include/
+/lib/
+/man/
+/share/
+/src/
