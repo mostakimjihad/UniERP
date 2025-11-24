@@ -1,4 +1,4 @@
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# Part of UniERP. See LICENSE file for full copyright and licensing details.
 
 RELEASE_LEVELS = [ALPHA, BETA, RELEASE_CANDIDATE, FINAL] = ['alpha', 'beta', 'candidate', 'final']
 RELEASE_LEVELS_DISPLAY = {ALPHA: 'a',
@@ -16,25 +16,27 @@ version_info = (19, 0, 0, FINAL, 0, '')
 series = serie = major_version = '.'.join(str(s) for s in version_info[:2])
 version = series + RELEASE_LEVELS_DISPLAY[version_info[3]] + str(version_info[4] or '') + version_info[5]
 
-product_name = 'Odoo'
-description = 'Odoo Server'
-long_desc = '''Odoo is a complete ERP and CRM. The main features are accounting (analytic
+product_name = 'UniERP'
+description = 'UniERP Server'
+long_desc = '''UniERP is a complete ERP and CRM solution based on Odoo framework. The main features are accounting (analytic
 and financial), stock management, sales and purchases management, tasks
 automation, marketing campaigns, help desk, POS, etc. Technical features include
 a distributed server, an object database, a dynamic GUI,
 customizable reports, and XML-RPC interfaces.
+
+This software is derived from Odoo and licensed under LGPL-3.
 '''
 classifiers = """Development Status :: 5 - Production/Stable
 License :: OSI Approved :: GNU Lesser General Public License v3
 
 Programming Language :: Python
 """
-url = 'https://www.odoo.com'
-author = 'OpenERP S.A.'
-author_email = 'info@odoo.com'
+url = 'https://www.uslbd.com'
+author = 'UniSoft Systems Ltd.'
+author_email = 'info@unisoft.com.bd'
 license = 'LGPL-3'
 
-nt_service_name = "odoo-server-" + series.replace('~','-')
+nt_service_name = "unierp-server-" + series.replace('~','-')
 
 MIN_PY_VERSION = (3, 10)
 MAX_PY_VERSION = (3, 13)
