@@ -136,10 +136,8 @@ function logOutItem(env) {
 
 registry
     .category("user_menuitems")
-    .add("support", supportItem)
     .add("shortcuts", shortCutsItem)
     .add("separator", separator)
     .add("preferences", preferencesItem)
-    .add("odoo_account", odooAccountItem)
     .add("install_pwa", installPWAItem)
     .add("log_out", logOutItem);
