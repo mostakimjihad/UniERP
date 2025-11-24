@@ -1,4 +1,4 @@
-/var/log/odoo/*.log {
+/var/log/unierp/*.log {
     copytruncate
     missingok
     notifempty

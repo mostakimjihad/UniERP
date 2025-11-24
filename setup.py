@@ -8,10 +8,10 @@ from os.path import join, dirname
 
 
 exec(open(join(dirname(__file__), 'odoo', 'release.py'), 'rb').read())  # Load release variables
-lib_name = 'odoo'
+lib_name = 'unierp'
 
 setup(
-    name='odoo',
+    name='unierp',
     version=version,
     description=description,
     long_description=long_desc,
@@ -20,7 +20,7 @@ setup(
     author_email=author_email,
     classifiers=[c for c in classifiers.split('\n') if c],
     license=license,
-    scripts=['setup/odoo'],
+    scripts=['setup/unierp'],
     packages=find_namespace_packages(),
     package_dir={'%s' % lib_name: 'odoo'},
     include_package_data=True,

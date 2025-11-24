@@ -1,12 +1,12 @@
 [Unit]
-Description=Odoo Open Source ERP and CRM
+Description=UniERP Open Source ERP and CRM
 After=network.target
 
 [Service]
 Type=simple
-User=odoo
-Group=odoo
-ExecStart=/usr/bin/odoo --config /etc/odoo/odoo.conf --logfile /var/log/odoo/odoo-server.log
+User=unierp
+Group=unierp
+ExecStart=/usr/bin/unierp --config /etc/unierp/unierp.conf --logfile /var/log/unierp/unierp-server.log
 KillMode=mixed
 
 [Install]

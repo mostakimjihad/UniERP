@@ -1,15 +1,15 @@
-Source: odoo
+Source: unierp
 Section: net
 Priority: optional
-Maintainer: Odoo S.A. <info@odoo.com>
-Uploaders: Aaron Bohy <aab@odoo.com>, Simon Lejeune <sle@odoo.com>
+Maintainer: UniSoft Systems Ltd. <info@unisoft.com.bd>
+Uploaders: UniSoft Development Team <dev@unisoft.com.bd>
 Build-Depends: debhelper-compat (= 12), dh-python, python3, rsync, python3-setuptools
 Standards-Version: 4.5.0
-Homepage: http://www.odoo.com/
-Vcs-Git: https://github.com/odoo/odoo
-Vcs-Browser: https://github.com/odoo/odoo
+Homepage: https://www.uslbd.com/
+Vcs-Git: https://github.com/unisoft/unierp
+Vcs-Browser: https://github.com/unisoft/unierp
 
-Package: odoo
+Package: unierp
 Architecture: all
 Depends:
  ${misc:Depends},
@@ -66,8 +66,8 @@ Depends:
  python3-xlrd,
  python3-zeep,
 Pre-Depends: ${misc:Pre-Depends}
-Conflicts: tinyerp-server, openerp-server, openerp-web, openerp
-Replaces: tinyerp-server, openerp-server, openerp-web, openerp
+Conflicts: tinyerp-server, openerp-server, openerp-web, openerp, odoo
+Replaces: tinyerp-server, openerp-server, openerp-web, openerp, odoo
 Recommends:
  ${python3:Recommends},
  postgresql,
