@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# Part of UniERP. See LICENSE file for full copyright and licensing details.
 
 
 {
@@ -7,7 +7,7 @@
     'version': '1.3',
     'category': 'Hidden',
     'description': """
-The kernel of Odoo, needed for all installation.
+The kernel of UniERP, needed for all installation.
 ===================================================
 """,
     'data': [
@@ -94,6 +94,6 @@ The kernel of Odoo, needed for all installation.
     'installable': True,
     'auto_install': True,
     'post_init_hook': 'post_init',
-    'author': 'Odoo S.A.',
+    'author': 'UniSoft Systems Ltd.',
     'license': 'LGPL-3',
 }

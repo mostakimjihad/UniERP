@@ -20,7 +20,7 @@
                         <div class="oe_title">
                             <label for="name"/>
                             <h1>
-                                <field name="name" placeholder="e.g. My Company"/>
+                                <field name="name" placeholder="e.g. UniERP Company"/>
                             </h1>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                                 <group>
                                     <field name="phone" class="o_force_ltr"/>
                                     <field name="email"/>
-                                    <field name="website" string="Website" widget="url" placeholder="e.g. https://www.odoo.com"/>
+                                    <field name="website" string="Website" widget="url" placeholder="e.g. https://www.uslbd.com"/>
                                     <field name="parent_id" groups="base.group_no_one"/>
                                     <field name="color" widget="color_picker"/>
                                 </group>
@@ -124,7 +124,7 @@
               <p class="o_view_nocontent_smiling_face">
                 Create a new company
               </p><p>
-                Create and manage the companies that will be managed by Odoo from here. Shops or subsidiaries can be created and maintained from here.
+                Create and manage the companies that will be managed by UniERP from here. Shops or subsidiaries can be created and maintained from here.
               </p>
             </field>
         </record>

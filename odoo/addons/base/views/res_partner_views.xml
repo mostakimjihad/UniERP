@@ -90,7 +90,7 @@
                                 <field name="zip" placeholder="ZIP" class="o_address_zip"/>
                                 <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
                             </div>
-                            <field name="website" string="Website" widget="url" placeholder="e.g. https://www.odoo.com"/>
+                            <field name="website" string="Website" widget="url" placeholder="e.g. https://www.uslbd.com"/>
                         </group>
                         <group>
                         </group>
@@ -185,7 +185,7 @@
                         <group>
                             <field name="function" placeholder="e.g. Sales Director" invisible="is_company"/>
                             <field name="vat" placeholder="e.g. BE0477472701"/>
-                            <field name="website" string="Website" widget="url" placeholder="e.g. https://www.odoo.com"/>
+                            <field name="website" string="Website" widget="url" placeholder="e.g. https://www.uslbd.com"/>
                             <field name="lang" invisible="active_lang_count &lt;= 1"/>
                             <field name="category_id" widget="many2many_tags" options="{'color_field': 'color'}"
                                    placeholder='e.g. "B2B", "VIP", "Consulting", ...'/>
@@ -401,7 +401,7 @@
               <p class="o_view_nocontent_smiling_face">
                 Create a Contact in your address book
               </p><p>
-                Odoo helps you track all activities related to your contacts.
+                UniERP helps you track all activities related to your contacts.
               </p>
             </field>
         </record>
@@ -436,7 +436,7 @@
               <p class="o_view_nocontent_smiling_face">
                 Create a new customer in your address book
               </p><p>
-                Odoo helps you easily track all activities related to a customer.
+                UniERP helps you easily track all activities related to a customer.
               </p>
             </field>
         </record>
@@ -470,7 +470,7 @@
               <p class="o_view_nocontent_smiling_face">
                 Create a new vendor in your address book
               </p><p>
-                Odoo helps you easily track all activities related to a vendor.
+                UniERP helps you easily track all activities related to a vendor.
               </p>
             </field>
         </record>
