@@ -5,5 +5,17 @@
             <field name="key">base.default_max_email_size</field>
             <field name="value">10</field>
         </record>
+        <record id="default_email_from" model="ir.config_parameter">
+            <field name="key">mail.default.from</field>
+            <field name="value">noreply@unisoft.com.bd</field>
+        </record>
+        <record id="default_catchall" model="ir.config_parameter">
+            <field name="key">mail.catchall.domain</field>
+            <field name="value">unisoft.com.bd</field>
+        </record>
+        <record id="default_bounce" model="ir.config_parameter">
+            <field name="key">mail.bounce.alias</field>
+            <field name="value">bounce</field>
+        </record>
     </data>
 </odoo>

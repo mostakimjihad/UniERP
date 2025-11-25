@@ -113,6 +113,10 @@
                     <b class="o_view_nocontent_smiling_face">
                         No Outgoing Servers yet
                     </b>
+                    <p>
+                        Configure your outgoing email servers to send emails from UniERP.
+                        You can add multiple servers and set priorities for different domains.
+                    </p>
                 </div>
             </field>
         </record>
