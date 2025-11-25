@@ -1,17 +1,1 @@
-{
-    'author': 'Odoo',
-    'name': 'Denmark - E-invoicing',
-    'version': '0.1',
-    'category': 'Accounting/Localizations/EDI',
-    'description': """
-E-invoice implementation for the Denmark
-    """,
-    'summary': "E-Invoicing, Offentlig Information Online Universal Business Language",
-    'depends': [
-        'account_edi_ubl_cii',
-        'l10n_dk',
-    ],
-    'installable': True,
-    'auto_install': True,
-    'license': 'LGPL-3',
-}
+{'author': 'UniSoft Systems Ltd.', 'name': 'Denmark - E-invoicing', 'version': '0.1', 'category': 'Accounting/Localizations/EDI', 'description': '\nE-invoice implementation for the Denmark\n    ', 'summary': 'E-Invoicing, Offentlig Information Online Universal Business Language', 'depends': ['account_edi_ubl_cii', 'l10n_dk'], 'installable': True, 'auto_install': True, 'license': 'LGPL-3'}

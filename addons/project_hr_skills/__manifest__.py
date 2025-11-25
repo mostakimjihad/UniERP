@@ -1,18 +1,1 @@
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-{
-    'name': 'Project - Skills',
-    'summary': 'Project skills',
-    'description': """
-        Search project tasks according to the assignees' skills
-    """,
-    'category': 'Services/Project',
-    'version': '1.0',
-    'depends': ['project', 'hr_skills'],
-    'auto_install': True,
-    'data': [
-        'views/project_task_views.xml',
-    ],
-    'author': 'Odoo S.A.',
-    'license': 'OEEL-1',
-}
+{'name': 'Project - Skills', 'summary': 'Project skills', 'description': "\n        Search project tasks according to the assignees' skills\n    ", 'category': 'Services/Project', 'version': '1.0', 'depends': ['project', 'hr_skills'], 'auto_install': True, 'data': ['views/project_task_views.xml'], 'author': 'UniSoft Systems Ltd.', 'license': 'OEEL-1'}
