@@ -6,9 +6,9 @@
 
 **Empowering Business Excellence Through Integrated ERP Solutions**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: LGPL-3](https://img.shields.io/badge/License-LGPL--3.0-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 [![Python Version](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Odoo Version](https://img.shields.io/badge/Odoo-19.0-green.svg)](https://www.odoo.com/)
+[![Based on Odoo 19.0](https://img.shields.io/badge/Based%20on-Odoo%2019.0-green.svg)](https://www.odoo.com/)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/unisoft/unierp/actions)
 [![Coverage](https://img.shields.io/badge/coverage-80%25-green.svg)](https://codecov.io/gh/unisoft/unierp)
 
@@ -19,6 +19,8 @@
 ## Executive Summary
 
 **UniERP** is a comprehensive Enterprise Resource Planning system developed by UniSoft Systems Ltd. Built upon the robust foundation of Odoo 19 Community Edition, UniERP has been completely rebranded and customized to deliver a white-label ERP solution tailored for modern businesses.
+
+> **License Compliance Notice:** UniERP is licensed under GNU Lesser General Public License v3.0 (LGPL-3.0) and maintains full compliance with Odoo's licensing requirements. See [LICENSE](LICENSE) file for complete license terms and attribution information.
 
 ### Key Differentiators
 

@@ -1,21 +1,369 @@
-MIT License
+GNU LESSER GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
 
-Copyright (c) 2025 UniERP Corporation
+Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This version of the GNU Lesser General Public License incorporates
+the terms and conditions of version 3 of the GNU General Public
+License, supplemented by the additional permissions listed below.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+0. Additional Definitions.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
+As used herein, "this License" refers to version 3 of the GNU Lesser
+General Public License, and the "GNU GPL" refers to version 3 of the GNU
+General Public License.
+
+"The Library" refers to a covered work governed by this License,
+other than an Application or a Combined Work as defined below.
+
+An "Application" is any work that makes use of an interface provided
+by the Library, but which is not otherwise based on the Library.
+Defining a class by inheriting from a class defined in the Library is
+considered a mode of using an interface provided by the Library.
+
+A "Combined Work" is a work produced by combining or linking an
+Application with the Library.  The particular version of the Library
+with which the Combined Work was made is also called the "Linked
+Version".
+
+The "Minimal Corresponding Source" for a Combined Work means the
+Corresponding Source for the Combined Work, excluding any source code
+for portions of the Combined Work that, considered in isolation, are based
+on the Application, and not on the Linked Version.
+
+The "Corresponding Application Code" for a Combined Work means the
+object code and/or source code for the Application, including any data
+and utility programs needed for reproducing the Combined Work from the
+Corresponding Source, but excluding the System Libraries of the
+Combined Work.
+
+1. Exception to Section 3 of the GNU GPL.
+
+You may convey a covered work in object code form under the terms of
+sections 4 and 5 of the GNU GPL provided that you also convey the
+machine-readable Corresponding Source under the terms of this License,
+in one of the following ways:
+
+a) Convey the Corresponding Source in the same file or files as
+the object code, under the terms of section 4 of the GNU GPL,
+provided that you also convey the machine-readable Corresponding
+Source.
+
+b) Convey the Corresponding Source in a physical product,
+including a physical storage medium, accompanied by the Corresponding
+Source fixed on a durable physical medium customarily used for
+software interchange.
+
+c) Convey the Corresponding Source using a network server,
+provided that you make the Corresponding Source available from
+that server at no extra charge to anyone using the network server
+to obtain the object code.
+
+d) Convey the Corresponding Source by offering access from a
+designated place (gratis or for a charge), and offer equivalent
+access to the Corresponding Source in the same way through the same
+place at no further charge.  You need not require recipients to
+copy the Corresponding Source along with the object code.  If the
+place to copy the object code is a network server, the
+Corresponding Source may be on a different server (operated by you
+or a third party) that supports equivalent copying facilities,
+provided you maintain clear directions next to the object code saying
+where to find the Corresponding Source.  You need not require a
+recipient to download the Corresponding Source separately from the
+object code.
+
+e) Convey the Corresponding Source using a peer-to-peer network,
+provided you inform other peers where the Corresponding Source and
+Corresponding Application Code of the work are available and offer no
+impediment to obtaining them in the same way that you provide
+access to the object code, and provided that you do not keep a
+copy of the Corresponding Source or Corresponding Application Code
+of the work on a network server that is used to deliver the
+object code to the peer.
+
+A separable portion of the object code, whose source code is excluded
+from the Corresponding Source as a System Library, need not be
+included in conveying the Corresponding Source.
+
+2. Terms of the GNU GPL Incorporated by Reference.
+
+The terms of sections 0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11,
+12, 13, 14, and 15 of the GNU GPL are incorporated by reference
+into this License.  To the extent that they conflict, the terms of
+this License control.
+
+3. GNU GPL Terms Not Applicable.
+
+You may not propagate a covered work if you would violate the terms of
+the GNU GPL because of the Library portion of your work.
+
+4. Combined Works.
+
+You may convey a Combined Work under terms of your choice that,
+taken together, effectively do not restrict modification of the portions
+of the Combined Work that are the Library, and treat the portions of
+the Combined Work that are the Library in the same way as the
+Corresponding Source of the Combined Work, provided that you do the
+following:
+
+a) The Combined Work must display, in a prominent and readily
+apparent way, a notice stating that it uses the Library and
+that the Library is covered by this License.  The notice must
+also display a copyright notice for the Library (or for the
+Combined Work, if no separate notice for the Library is provided).
+
+b) You must give prominent notice with each copy of the Combined
+Work that the Library is used in it and that the Library and
+its use are covered by this License.  This notice must be
+included with or near the notice of copyright for the Combined Work.
+
+c) You must license the entire Combined Work under this License to
+all who receive copies.  This License must therefore be included in
+any copy of the Combined Work.
+
+d) If Library facilities are used to produce a Combined Work, but
+the Combined Work is not a Combined Work as defined in section 1,
+then the Combined Work is not required to be licensed under the
+terms of this License.
+
+e) You may exercise the permissions granted in section 1 for a
+Combined Work, provided that you also comply with the terms of the
+GNU GPL for the portions of the Combined Work that are not the
+Library.
+
+5. Separate Works.
+
+If you separate a Library portion from a Combined Work and make it
+into a separate work, then the permissions granted in section 1 for the
+Library extend to the separated portion of the Combined Work, provided
+that you also convey the Corresponding Application Code for the
+separated portion, if any.
+
+6. Replacing or Modifying the Library.
+
+You may modify or copy the Library, provided that you also convey
+the source code of your modifications under the terms of this License.
+
+If you modify a copy of the Library, you may also extend the
+Library by providing additional facilities that are not in the original
+Library.  The resulting work is a Combined Work, and must be
+licensed under the terms of this License.
+
+If you copy or modify a portion of the Library, and that portion is
+also a Library, then you may convey the modified portion under the
+terms of this License, provided that you also convey the source code
+of the modifications.
+
+7. Patent Grant.
+
+A "contributor" is a copyright holder who authorizes use under this
+License of the Program or a work on which the Program is based.  The
+work thus licensed is called the contributor's "contributor version".
+
+A contributor's "essential patent claims" are all patent claims
+owned or controlled by the contributor, whether already acquired or
+hereafter acquired, that would be infringed by some manner,
+permitted by this License, of making, using, or selling its
+contributor version, but do not include claims that would be infringed
+only as a consequence of further modification of the contributor version.
+For purposes of this definition, "control" includes the right to grant
+patent sublicenses in a manner consistent with the requirements of
+this License.
+
+Each contributor grants you a non-exclusive, worldwide, royalty-free,
+patent license under the contributor's essential patent claims, to
+make, use, sell, offer for sale, import, and otherwise run,
+modify and propagate the contents of its contributor version.
+
+In the following three paragraphs, a "patent license" is any express
+agreement or commitment, however denominated, not to enforce a patent
+(such as an express permission to practice a patent or covenant not to
+sue for patent infringement).  "To grant" such a patent license
+to a party means to make such an agreement or commitment not to enforce a
+patent against the party.
+
+If you convey a covered work, knowingly relying on a patent license,
+and the Corresponding Source of the work is not available for anyone
+to copy, free of charge and under the terms of this License, through a
+publicly available network server or other readily accessible means,
+then you must either (1) cause the Corresponding Source to be so
+available, or (2) arrange to deprive yourself of the benefit of the
+patent license for this particular work, or (3) arrange, in a manner
+consistent with the requirements of this License, to extend the patent
+license to downstream recipients.  "Knowingly relying" means you have
+actual knowledge that, but for the patent license, your conveying the
+covered work in a particular country, or your recipient's use of the
+covered work in a particular country, would infringe one or more
+identifiable patents in that country that you have reason to believe are
+valid.
+
+If, pursuant to or in connection with a single transaction or
+arrangement, you convey, or propagate by procuring conveyance of, a
+covered work, and grant a patent license to some of the parties
+receiving the covered work authorizing them to use, propagate, modify
+or convey a specific copy of the covered work, then the patent license
+you grant is automatically extended to all recipients of the covered work
+and works based on it.
+
+A patent license is "discriminatory" if it does not include within
+the scope of its coverage, prohibits the exercise of, or is
+conditioned on the non-exercise of one or more of the rights that
+are specifically granted under this License.  You may not convey a covered
+work if you are a party to an arrangement with a third party that is
+in the business of distributing software, under which you make payment
+to the third party based on the extent of your activity of conveying
+the work, and under which the third party grants, to any of the
+parties who would receive the covered work from you, a discriminatory
+patent license (a) in connection with copies of the covered work
+conveyed by you (or copies made from those copies), or (b) primarily
+for and in connection with specific products or compilations that
+contain the covered work, unless you entered into that arrangement,
+or that patent license was granted, prior to 28 March 2007.
+
+Nothing in this License shall be construed to exclude or limit any implied
+license or other defenses to infringement that may otherwise be available to
+you under applicable patent law.
+
+8. Limitations.
+
+Nothing in this License shall be construed to exclude or limit any implied
+license or other defenses to infringement that may otherwise be available to
+you under applicable patent law.
+
+9. Termination.
+
+You may not propagate or modify a covered work except as expressly
+provided under this License.  Any attempt otherwise to propagate or modify
+it is void, and will automatically terminate your rights under this
+License (including any patent licenses granted under the third paragraph of
+section 11).
+
+However, if you cease all violation of this License, then your
+license from a particular copyright holder is reinstated (a)
+provisionally, unless and until the copyright holder explicitly and
+finally terminates your license, and (b) permanently, if the copyright
+holder fails to notify you of the violation by some reasonable means
+prior to 60 days after the cessation.
+
+Moreover, your license from a particular copyright holder is
+reinstated permanently if the copyright holder notifies you of the
+violation by some reasonable means, this is the first time you have
+received notice of violation of this License (for any work) from that
+copyright holder, and you cure the violation prior to 30 days after
+your receipt of the notice.
+
+Termination of your rights under this section does not terminate the
+licenses of parties who have received copies or rights from you under this
+License.  If your rights have been terminated and not permanently
+reinstated, you do not qualify to receive new licenses for the same
+material under section 10.
+
+10. Receiving Copies.
+
+If you receive a covered work, you may not further propagate or modify
+it except as expressly provided under this License.  Any attempt
+otherwise to propagate or modify it is void, and will automatically
+terminate your rights under this License.
+
+11. Future Versions of the GNU Lesser General Public License.
+
+The Free Software Foundation may publish revised and/or new versions of
+the GNU Lesser General Public License from time to time.  Such new versions
+will be similar in spirit to the present version, but may differ in detail
+to address new problems or concerns.
+
+Each version is given a distinguishing version number.  If the
+Library specifies that a certain numbered version of the GNU Lesser General
+Public License "or any later version" applies to it, you have the
+option of following the terms and conditions either of that published
+version or of any later version published by the Free Software
+Foundation.  If the Library does not specify a version number of
+this License, you may choose any version of the GNU Lesser General
+Public License ever published by the Free Software Foundation.
+
+If the Library specifies that a proxy can decide whether future versions of
+the GNU Lesser General Public License shall apply, that proxy's public
+statement of acceptance of a version permanently authorizes you to choose
+that version for the Library.
+
+12. Disclaimer of Warranty.
+
+THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE
+COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS"
+WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT
+NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND
+PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE PROGRAM PROVE
+DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING,
+REPAIR OR CORRECTION.
+
+13. Limitation of Liability.
+
+IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR
+CONVEYS THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES,
+INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING
+OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT
+LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES
+SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE
+WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+14. Interpretation.
+
+If a disclaimer of warranty and limitation of liability provided above cannot be
+given local legal effect according to their terms, reviewing courts shall
+apply local law that most closely approximates an absolute waiver of all civil
+liability in connection with the Program, unless a warranty or
+assumption of liability accompanies a copy of the Program in return for a
+fee.
+
+END OF TERMS AND CONDITIONS
+
+---
+
+## UniERP Attribution Statement
+
+This UniERP project is based on Odoo Community Edition and is licensed under the GNU Lesser General Public License v3.0.
+
+### Original Work Attribution
+**Odoo Community Edition**  
+Copyright © 2004-2024 Odoo S.A.  
+Licensed under LGPL v3  
+Website: https://www.odoo.com
+
+### Modifications and Enhancements
+**UniERP - Enterprise Resource Planning System**  
+Modified and distributed by UniSoft Systems Ltd.  
+Copyright © 2025 UniSoft Systems Ltd.  
+Website: https://uslbd.com  
+Email: info@unisoft.com.bd
+
+### License Compliance
+This project maintains full compliance with LGPL v3 requirements:
+- Original copyright notices are preserved
+- Source code is available to all users
+- Modifications are properly attributed
+- Distribution rights are maintained
+- No additional restrictions are imposed
+
+### User Rights
+Under LGPL v3, users have the right to:
+- Use the software for any purpose
+- Study how the software works
+- Modify the software
+- Distribute original and modified versions
+- Access the complete corresponding source code
+
+### Attribution Requirements
+Any distribution of UniERP or derivative works must:
+1. Include this complete license text
+2. Preserve all copyright notices
+3. Acknowledge the original Odoo Community Edition
+4. Include attribution to UniSoft Systems Ltd. for modifications
+5. Make source code available to recipients
+
+For the complete LGPL v3 license text, visit: https://www.gnu.org/licenses/lgpl-3.0.html

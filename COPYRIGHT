@@ -1,15 +1,106 @@
+# UniERP Project Copyright Attribution
 
-Most of the files are
+This file contains copyright information for the UniERP project, which is based on Odoo Community Edition and modified by UniSoft Systems Ltd.
 
-  Copyright (c) 2004-2015 Odoo S.A.
+## Original Work - Odoo Community Edition
 
-Many files also contain contributions from third
-parties. In this case the original copyright of
-the contributions can be traced through the
-history of the source version control system.
+**Copyright © 2004-2024 Odoo S.A.**  
+Licensed under GNU Lesser General Public License v3.0  
+Website: https://www.odoo.com  
+Email: info@odoo.com
 
-When that is not the case, the files contain a prominent
-notice stating the original copyright and applicable
-license, or come with their own dedicated COPYRIGHT
-and/or LICENSE file.
+The original Odoo Community Edition code, framework, and core functionality remain the intellectual property of Odoo S.A. and are licensed under LGPL v3.0.
 
+## Modifications and Enhancements - UniERP
+
+**Copyright © 2025 UniSoft Systems Ltd.**  
+Licensed under GNU Lesser General Public License v3.0  
+Website: https://uslbd.com  
+Email: info@unisoft.com.bd  
+Support: support@unisoft.com.bd
+
+All modifications, customizations, branding changes, and enhancements made to transform Odoo Community Edition into UniERP are the intellectual property of UniSoft Systems Ltd.
+
+## Dual Attribution Statement
+
+UniERP is a derivative work based on Odoo Community Edition. This project maintains full compliance with LGPL v3.0 requirements by:
+
+1. **Preserving Original Copyright**: All original Odoo S.A. copyright notices are retained in their original form
+2. **Adding Modification Attribution**: All changes made by UniSoft Systems Ltd. are properly attributed
+3. **Maintaining License Terms**: The entire project continues under LGPL v3.0 licensing
+4. **Providing Source Access**: Complete source code is available to all users
+
+## File Attribution Guidelines
+
+When modifying files in this project:
+
+### Original Odoo Files (Unmodified)
+```python
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# Copyright © 2004-2024 Odoo S.A.
+# Licensed under LGPL v3
+```
+
+### Modified Odoo Files
+```python
+# Part of UniERP. See LICENSE file for full copyright and licensing details.
+#
+# Based on Odoo Community Edition
+# Copyright © 2004-2024 Odoo S.A.
+# Licensed under LGPL v3
+#
+# Modified by UniSoft Systems Ltd.
+# Copyright © 2025 UniSoft Systems Ltd.
+# https://uslbd.com
+```
+
+### New UniERP Files
+```python
+# Part of UniERP. See LICENSE file for full copyright and licensing details.
+# Copyright © 2025 UniSoft Systems Ltd.
+# https://uslbd.com
+# Licensed under LGPL v3
+```
+
+## Third-Party Contributions
+
+This project may include contributions from third parties. In such cases:
+
+1. Original copyright of contributions can be traced through the version control system history
+2. Files contain prominent notices stating original copyright and applicable license
+3. Contributions come with their own dedicated COPYRIGHT and/or LICENSE file when applicable
+
+## License Compliance
+
+This project complies with GNU Lesser General Public License v3.0 requirements:
+
+- ✅ Source code availability to all users
+- ✅ Preservation of original copyright notices
+- ✅ Proper attribution of modifications
+- ✅ No additional restrictions beyond LGPL v3.0
+- ✅ Complete license text included in LICENSE file
+
+## Contact Information
+
+**For Original Odoo Code:**
+- Odoo S.A.
+- Website: https://www.odoo.com
+- Email: info@odoo.com
+
+**For UniERP Modifications:**
+- UniSoft Systems Ltd.
+- Website: https://uslbd.com
+- Email: info@unisoft.com.bd
+- Support: support@unisoft.com.bd
+- Address: Dhaka, Bangladesh
+
+## Legal Notice
+
+This copyright attribution is provided for compliance with LGPL v3.0 requirements. Any distribution of UniERP or derivative works must include this complete attribution and comply with all terms of the GNU Lesser General Public License v3.0.
+
+For the complete license text, see the LICENSE file in the root directory of this project.
+
+---
+
+*This COPYRIGHT file is part of the UniERP project compliance documentation.*
+*Last updated: November 25, 2025*
