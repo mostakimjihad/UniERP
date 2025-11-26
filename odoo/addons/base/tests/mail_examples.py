@@ -610,7 +610,7 @@ REMOVE_CLASS = u"""
         <div class="modal-dialog modal-lg">
             <div class="modal-content openerp">
                 <div class="modal-header"> 
-                    <h4 class="modal-title">Odoo Error<span class="o_subtitle text-muted"></span></h4>
+                    <h4 class="modal-title">UniSoft Error<span class="o_subtitle text-muted"></span></h4>
                 </div>
                 <div class="o_error_detail modal-body">
                     <pre>An error occurred in a modal and I will send you back the html to try opening one on your end</pre>
