@@ -256,12 +256,12 @@ if geoip2:
 MISSING_CSRF_WARNING = """\
 No CSRF validation token provided for path %r
 
-Odoo URLs are CSRF-protected by default (when accessed with unsafe
+UniSoft URLs are CSRF-protected by default (when accessed with unsafe
 HTTP methods). See
 https://www.odoo.com/documentation/master/developer/reference/addons/http.html#csrf
 for more details.
 
-* if this endpoint is accessed through Odoo via py-QWeb form, embed a CSRF
+* if this endpoint is accessed through UniSoft via py-QWeb form, embed a CSRF
   token in the form, Tokens are available via `request.csrf_token()`
   can be provided through a hidden input and must be POST-ed named
   `csrf_token` e.g. in your form add:
@@ -284,7 +284,7 @@ NOT_FOUND_NODB = """\
 <p>No database is selected and the requested URL was not found in the server-wide controllers.</p>
 <p>Please verify the hostname, <a href=/web/login>login</a> and try again.</p>
 
-<!-- Alternatively, use the X-Odoo-Database header. -->
+<!-- Alternatively, use the X-UniSoft-Database header. -->
 """
 
 # The @route arguments to propagate from the decorated method to the
@@ -1318,8 +1318,8 @@ class GeoIP(collections.abc.Mapping):
     .. code-block:
 
         >>> GeoIP('127.0.0.1').country.iso_code
-        >>> odoo_ip = socket.gethostbyname('odoo.com')
-        >>> GeoIP(odoo_ip).country.iso_code
+        >>> uni_soft_ip = socket.gethostbyname('unisoft.com')
+        >>> GeoIP(uni_soft_ip).country.iso_code
         'FR'
     """
 
@@ -1978,7 +1978,7 @@ class Request:
                 _logger.debug("Profiling disabled on set_profiling route")
             elif self.httprequest.path.startswith('/websocket'):
                 _logger.debug("Profiling disabled for websocket")
-            elif odoo.evented:
+            elif uni_soft.evented:
                 # only longpolling should be in a evented server, but this is an additional safety
                 _logger.debug("Profiling disabled for evented server")
             else:
@@ -2559,7 +2559,7 @@ class JsonRPCDispatcher(Dispatcher):
         """
         error = {
             'code': 0,  # we don't care of this code
-            'message': "Odoo Server Error",
+            'message': "UniSoft Server Error",
             'data': serialize_exception(exc),
         }
         if isinstance(exc, NotFound):
@@ -2567,7 +2567,7 @@ class JsonRPCDispatcher(Dispatcher):
             error['message'] = "404: Not Found"
         elif isinstance(exc, SessionExpiredException):
             error['code'] = 100
-            error['message'] = "Odoo Session Expired"
+            error['message'] = "UniSoft Session Expired"
 
         return self._response(error=error)
 

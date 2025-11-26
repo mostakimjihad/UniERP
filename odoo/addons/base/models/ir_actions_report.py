@@ -785,7 +785,7 @@ class IrActionsReport(models.Model):
         return view_obj._render_template(template, values).encode()
 
     def _handle_merge_pdfs_error(self, error=None, error_stream=None):
-        raise UserError(_("Odoo is unable to merge the generated PDFs."))
+        raise UserError(_("UniSoft is unable to merge the generated PDFs."))
 
     @api.model
     def _merge_pdfs(self, streams, handle_error=_handle_merge_pdfs_error):
@@ -1077,7 +1077,7 @@ class IrActionsReport(models.Model):
                     'res_id': error_record_ids[0],
                 })
             raise RedirectWarning(
-                message=_('Odoo is unable to merge the generated PDFs because of %(num_errors)s corrupted file(s)', num_errors=num_errors),
+                message=_('UniSoft is unable to merge the generated PDFs because of %(num_errors)s corrupted file(s)', num_errors=num_errors),
                 action=action,
                 button_text=_('View Problematic Record(s)'),
             )
