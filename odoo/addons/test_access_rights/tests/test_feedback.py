@@ -424,7 +424,7 @@ Blame the following rules:
 
 If you really, really need access, perhaps you can win over your friendly administrator with a batch of freshly baked cookies.
 
-Note: this might be a multi-company issue. Switching company may help - in Odoo, not in real life!""")
+Note: this might be a multi-company issue. Switching company may help - in UniERP, not in real life!""")
 
 
 class TestFieldGroupFeedback(Feedback):
