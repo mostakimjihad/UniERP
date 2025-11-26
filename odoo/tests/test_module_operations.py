@@ -70,14 +70,14 @@ def parse_args():
     parser.add_argument("--database", "-d", type=str, required=True,
         help="The database to test (/ run the command on)")
     parser.add_argument("--data-dir", "-D", dest="data_dir", type=str,
-        help="Directory where to store Odoo data"
+        help="Directory where to store UniERP data"
     )
     parser.add_argument("--skip", "-s", type=str,
         help="Comma-separated list of modules to skip (they will only be installed)")
     parser.add_argument("--resume-at", "-r", type=str,
         help="Skip modules (only install) up to the specified one in topological order")
     parser.add_argument("--addons-path", "-p", type=addons_path,
-        help="Comma-separated list of paths to directories containing extra Odoo modules")
+        help="Comma-separated list of paths to directories containing extra UniERP modules")
 
     cmds = parser.add_subparsers(title="subcommands", metavar='')
     cycle = cmds.add_parser(

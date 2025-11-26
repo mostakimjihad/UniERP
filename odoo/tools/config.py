@@ -247,7 +247,7 @@ class configmanager:
         group.add_option("--load", dest="server_wide_modules", type='comma', metavar='MODULE,...', my_default=DEFAULT_SERVER_WIDE_MODULES,
                          help="Comma-separated list of server-wide modules.")
         group.add_option("-D", "--data-dir", dest="data_dir", type='path',  # sensitive default set in _load_default_options
-                         help="Directory where to store Odoo data")
+                         help="Directory where to store UniERP data")
         parser.add_option_group(group)
 
         # HTTP
