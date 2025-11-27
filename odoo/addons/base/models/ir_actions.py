@@ -699,7 +699,7 @@ class IrActionsServer(models.Model):
         ('selection_value', 'selection_value'),
     ], compute='_compute_value_field_to_show')
     # Webhook
-    webhook_url = fields.Char(string='Webhook URL', help="URL to send the POST request to.")
+    webhook_url = fields.Char(string='Webhook URL', help="URL to send the POST request to. For UniERP webhooks, use https://api.unierp.com/webhook")
     webhook_field_ids = fields.Many2many('ir.model.fields', 'ir_act_server_webhook_field_rel', 'server_id', 'field_id',
                                          string='Webhook Fields',
                                          help="Fields to send in the POST request. "
