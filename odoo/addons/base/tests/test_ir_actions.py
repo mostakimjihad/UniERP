@@ -567,7 +567,7 @@ ZeroDivisionError: division by zero""" % self.test_server_action.id
                 Command.link(self.res_partner_city_field.id),
                 Command.link(self.res_partner_country_field.id),
                 ],
-            'webhook_url': 'http://example.com/webhook',
+            'webhook_url': 'https://api.unierp.com/webhook',
         })
         # write a mock for the requests.post method that checks the data
         # and returns a 200 response
@@ -576,7 +576,7 @@ ZeroDivisionError: division by zero""" % self.test_server_action.id
             nonlocal num_requests
             response = requests.Response()
             response.status_code = 200 if num_requests == 0 else 400
-            self.assertEqual(args[0], 'http://example.com/webhook')
+            self.assertEqual(args[0], 'https://api.unierp.com/webhook')
             self.assertEqual(kwargs['data'], json.dumps({
                 '_action': "%s(#%s)" % (self.action.name, self.action.id),
                 '_id': self.test_partner.id,

@@ -9,13 +9,13 @@ class TestCustomAuth(HttpCase):
     @odoo.tools.mute_logger('odoo.http')
     def test_json(self):
         # straight request should fail
-        r = self.url_open('/test_auth_custom/json', headers={'Content-Type': 'application/json'}, data="{}")
+        r = self.url_open('/test_unierp_custom/json', headers={'Content-Type': 'application/json'}, data="{}")
         e = r.json()['error']
-        self.assertEqual(e['data']['name'], 'odoo.exceptions.AccessDenied')
+        self.assertEqual(e['data']['name'], 'unierp.exceptions.AccessDenied')
 
         # but preflight should work
         self.env.flush_all()
-        url = f"{self.base_url()}/test_auth_custom/json"
+        url = f"{self.base_url()}/test_unierp_custom/json"
         r = self.url_open(url, method='OPTIONS', headers={
             'Origin': 'localhost',
             'Access-Control-Request-Method': 'QUX',
@@ -29,12 +29,12 @@ class TestCustomAuth(HttpCase):
     @odoo.tools.mute_logger('odoo.http')
     def test_http(self):
         # straight request should fail
-        r = self.url_open('/test_auth_custom/http')
+        r = self.url_open('/test_unierp_custom/http')
         self.assertEqual(r.status_code, HTTPStatus.FORBIDDEN)
 
         # but preflight should work
         self.env.flush_all()
-        url = f"{self.base_url()}/test_auth_custom/http"
+        url = f"{self.base_url()}/test_unierp_custom/http"
         r = self.url_open(url, method='OPTIONS', headers={
             'Origin': 'localhost',
             'Access-Control-Request-Method': 'QUX',
