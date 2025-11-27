@@ -1,0 +1,239 @@
+/* Copyright 2024 UniERP
+ * License AGPL-3.0 or later
+ */
+
+/* UniERP Help System Styles */
+
+.o_help_sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background: #f8f9fa;
+    border-left: 1px solid #e9ecef;
+    box-shadow: 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow-y: auto;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 14px;
+}
+
+.o_help_branding {
+    text-align: center;
+    padding: 20px;
+    background: #2c3e50;
+    border-bottom: 1px solid #34495e;
+}
+
+.o_help_branding_text {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.o_help_branding_link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 10px;
+    
+    &:hover {
+        text-decoration: underline;
+        color: #e3f2fd;
+    }
+}
+
+.o_help_categories {
+    padding: 20px;
+}
+
+.o_help_category {
+    margin-bottom: 15px;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.o_help_category_title {
+    margin: 0 0 10px 0;
+    padding: 15px;
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.o_help_category_toggle {
+    background: none;
+    border: none;
+    color: #2c3e50;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+        color: #1a73e8;
+    }
+}
+
+.o_help_category_content {
+    padding: 15px;
+}
+
+.o_help_item {
+    margin-bottom: 10px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-left: 3px solid #2c3e50;
+    border-radius: 4px;
+}
+
+.o_help_item_title {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.o_help_item_link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    
+    &:hover {
+        text-decoration: underline;
+        color: #0056b3;
+    }
+}
+
+.o_help_item_description {
+    color: #6c757d;
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+/* Context Help Styles */
+
+.o_context_help {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+    width: 400px;
+    max-width: 90%;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.o_context_help_title {
+    text-align: center;
+    padding: 20px;
+    color: #2c3e50;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.o_context_help_content {
+    padding: 20px;
+    text-align: center;
+    color: #6c757d;
+}
+
+.o_context_help_content a {
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+/* Search Help Styles */
+
+.o_search_help {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+    width: 400px;
+    max-width: 90%;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.o_search_help_title {
+    text-align: center;
+    padding: 20px;
+    color: #2c3e50;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.o_search_help_content {
+    padding: 20px;
+}
+
+.o_search_input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.o_search_button {
+    background: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.o_search_results {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f8f9fa;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .o_help_sidebar {
+        width: 250px;
+        height: 100vh;
+    }
+    
+    .o_context_help,
+    .o_search_help {
+        width: 90%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .o_help_sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .o_context_help,
+    .o_search_help {
+        width: 95%;
+        max-width: none;
+    }
+}

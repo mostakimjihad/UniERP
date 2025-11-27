@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Help System Views -->
+    
+    <!-- Help Sidebar View -->
+    <record id="view_help_sidebar" model="ir.ui.view">
+        <field name="name">Help Sidebar</field>
+        <field name="model">ir.help</field>
+        <field name="arch" type="xml">
+            <t t-call="web.base_layout">
+                <t t-set="title">UniERP Help System</t-set>
+                <t t-set="head">
+                    <title>UniERP Help System</title>
+                    <meta charset="utf-8"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                    <link rel="stylesheet" href="/web/static/src/scss/help_system.css"/>
+                    <script type="text/javascript" src="/web/static/src/js/help_sidebar.js"></script>
+                </t-set>
+                <t t-set="main">
+                    <div class="o_content">
+                        <div class="o_help_sidebar" id="help_sidebar"></div>
+                    </div>
+                </t-set>
+            </t>
+        </field>
+    </record>
+    
+    <!-- Help Content View -->
+    <record id="view_help_content" model="ir.ui.view">
+        <field name="name">Help Content</field>
+        <field name="model">ir.help</field>
+        <field name="arch" type="xml">
+            <t t-call="web.base_layout">
+                <t t-set="title">UniERP Help Content</t-set>
+                <t t-set="head">
+                    <title>UniERP Help Content</title>
+                    <meta charset="utf-8"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                    <link rel="stylesheet" href="/web/static/src/scss/help_system.css"/>
+                    <script type="text/javascript" src="/web/static/src/js/help_sidebar.js"></script>
+                </t-set>
+                <t t-set="main">
+                    <div class="o_content">
+                        <div class="o_help_content" id="help_content"></div>
+                    </div>
+                </t-set>
+            </t>
+        </field>
+    </record>
+    
+    <!-- Context Help View -->
+    <record id="view_context_help" model="ir.ui.view">
+        <field name="name">Context Help</field>
+        <field name="model">ir.help</field>
+        <field name="arch" type="xml">
+            <t t-call="web.base_layout">
+                <t t-set="title">UniERP Context Help</t-set>
+                <t t-set="head">
+                    <title>UniERP Context Help</title>
+                    <meta charset="utf-8"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                    <link rel="stylesheet" href="/web/static/src/scss/help_system.css"/>
+                    <script type="text/javascript" src="/web/static/src/js/help_sidebar.js"></script>
+                </t-set>
+                <t t-set="main">
+                    <div class="o_content">
+                        <div class="o_context_help" id="context_help"></div>
+                    </div>
+                </t-set>
+            </t>
+        </field>
+    </record>
+    
+    <!-- Search Help View -->
+    <record id="view_search_help" model="ir.ui.view">
+        <field name="name">Search Help</field>
+        <field name="model">ir.help</field>
+        <field name="arch" type="xml">
+            <t t-call="web.base_layout">
+                <t t-set="title">UniERP Search Help</t-set>
+                <t t-set="head">
+                    <title>UniERP Search Help</title>
+                    <meta charset="utf-8"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                    <link rel="stylesheet" href="/web/static/src/scss/help_system.css"/>
+                    <script type="text/javascript" src="/web/static/src/js/help_sidebar.js"></script>
+                </t-set>
+                <t t-set="main">
+                    <div class="o_content">
+                        <div class="o_search_help" id="search_help"></div>
+                    </div>
+                </t-set>
+            </t>
+        </field>
+    </record>
+    
+    <!-- Help Item View -->
+    <record id="view_help_item" model="ir.ui.view">
+        <field name="name">Help Item</field>
+        <field name="model">ir.help</field>
+        <field name="arch" type="xml">
+            <t t-call="web.base_layout">
+                <t t-set="title">UniERP Help Item</t-set>
+                <t t-set="head">
+                    <title>UniERP Help Item</title>
+                    <meta charset="utf-8"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                    <link rel="stylesheet" href="/web/static/src/scss/help_system.css"/>
+                    <script type="text/javascript" src="/web/static/src/js/help_sidebar.js"></script>
+                </t-set>
+                <t t-set="main">
+                    <div class="o_content">
+                        <div class="o_help_item" id="help_item"></div>
+                    </div>
+                </t-set>
+            </t>
+        </field>
+    </record>
+    
+    <!-- Help Category View -->
+    <record id="view_help_category" model="ir.ui.view">
+        <field name="name">Help Category</field>
+        <field name="model">ir.help</field>
+        <field name="arch" type="xml">
+            <t t-call="web.base_layout">
+                <t t-set="title">UniERP Help Category</t-set>
+                <t t-set="head">
+                    <title>UniERP Help Category</title>
+                    <meta charset="utf-8"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                    <link rel="stylesheet" href="/web/static/src/scss/help_system.css"/>
+                    <script type="text/javascript" src="/web/static/src/js/help_sidebar.js"></script>
+                </t-set>
+                <t t-set="main">
+                    <div class="o_content">
+                        <div class="o_help_category" id="help_category"></div>
+                    </div>
+                </t-set>
+            </t>
+        </field>
+    </record>
+</odoo>
