@@ -75,7 +75,7 @@ QUOTE_BLOCKQUOTE = u"""<html>
 cite="mid:CAEJSRZvWvud8c6Qp=wfNG6O1+wK3i_jb33qVrF7XyrgPNjnyUA@mail.gmail.com"
       type="cite"><base href="https://www.odoo.com">
       <div dir="ltr">Yep Dominique that is true, as Postgres was the
-        base of all same as Odoo and MySQL etc came much later.Â 
+        base of all same as UniERP and MySQL etc came much later.Â
         <div><br>
         </div>
         <div>Unfortunately many customers who ask for and ERP are with
@@ -89,7 +89,7 @@ cite="mid:CAEJSRZvWvud8c6Qp=wfNG6O1+wK3i_jb33qVrF7XyrgPNjnyUA@mail.gmail.com"
     </blockquote>
     <br>
     I don't care how much you are highlighting the advantages of Erpnext
-    on this Odoo mailinglist, but when you start implying that Postgres
+    on this UniERP mailinglist, but when you start implying that Postgres
     is not well documented it really hurts.<br>
     <br>
     <pre class="moz-signature" cols="72">-- 
@@ -395,19 +395,19 @@ GMAIL_1_OUT = []
 
 HOTMAIL_1 = u"""<div>
     <div dir="ltr"><br>
-        I have an amazing company, i'm learning OpenERP, it is a small company yet, but plannig to grow up quickly.
+        I have an amazing company, i'm learning UniERP, it is a small company yet, but plannig to grow up quickly.
         <br><br>Kindest regards,<br>xxx<br>
         <div>
             <div id="SkyDrivePlaceholder">
             </div>
             <hr id="stopSpelling">
-            Subject: Re: your OpenERP.com registration<br>From: xxx@xxx.xxx<br>To: xxx@xxx.xxx<br>Date: Wed, 27 Mar 2013 17:12:12 +0000
+            Subject: Re: your UniERP.com registration<br>From: xxx@xxx.xxx<br>To: xxx@xxx.xxx<br>Date: Wed, 27 Mar 2013 17:12:12 +0000
             <br><br>
             Hello xxx,
             <br>
-            I noticed you recently created an OpenERP.com account to access OpenERP Apps.
+            I noticed you recently created an UniERP.com account to access UniERP Apps.
             <br>
-            You indicated that you wish to use OpenERP in your own company.
+            You indicated that you wish to use UniERP in your own company.
             We would like to know more about your your business needs and requirements, and see how
             we can help you. When would you be available to discuss your project?<br>
             Best regards,<br>
@@ -446,7 +446,7 @@ MSOFFICE_1 = u"""
         <p class="MsoNormal">
             <span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;color:#1F497D">
                 I’ll install on a windows server and run a very limited trial to see how it works.
-                If we adopt OpenERP we will probably move to Linux or look for a hosted SaaS option.
+                If we adopt UniERP we will probably move to Linux or look for a hosted SaaS option.
             </span>
         </p>
         <p></p>
@@ -498,8 +498,8 @@ MSOFFICE_1 = u"""
                         From:
                     </span></b>
                     <span style="font-size:10.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;">
-                        OpenERP Enterprise [mailto:sales@openerp.com]
-                        <br><b>Sent:</b> Monday, 11 March, 2013 14:47<br><b>To:</b> Alan Widmer<br><b>Subject:</b> Re: your OpenERP.com registration
+                        UniERP Enterprise [mailto:sales@uslbd.com]
+                        <br><b>Sent:</b> Monday, 11 March, 2013 14:47<br><b>To:</b> Alan Widmer<br><b>Subject:</b> Re: your UniERP.com registration
                     </span>
                 </p>
                 <p></p>
@@ -510,14 +510,14 @@ MSOFFICE_1 = u"""
         <p>&nbsp;</p>
         <p>Hello Alan Widmer, </p>
         <p></p>
-        <p>I noticed you recently downloaded OpenERP. </p>
+        <p>I noticed you recently downloaded UniERP. </p>
         <p></p>
         <p>
-            Uou mentioned you wish to use OpenERP in your own company. Please let me more about your
+            Uou mentioned you wish to use UniERP in your own company. Please let me more about your
             business needs and requirements? When will you be available to discuss about your project?
         </p>
         <p></p>
-        <p>Thanks for your interest in OpenERP, </p>
+        <p>Thanks for your interest in UniERP, </p>
         <p></p>
         <p>Feel free to contact me if you have any questions, </p>
         <p></p>
@@ -600,7 +600,7 @@ Web: http://www.openerp.com"""]
 REMOVE_CLASS = u"""
 <div style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; COLOR: #000000">
     <div>Hello</div>
-    <div>I have just installed Odoo 9 and I've got the following error:</div>
+    <div>I have just installed UniERP 9 and I've got the following error:</div>
     <div>&nbsp;</div>
     <div class="openerp openerp_webclient_container oe_webclient">
         <div class="oe_loading" style="DISPLAY: none">&nbsp;</div>
@@ -610,7 +610,7 @@ REMOVE_CLASS = u"""
         <div class="modal-dialog modal-lg">
             <div class="modal-content openerp">
                 <div class="modal-header"> 
-                    <h4 class="modal-title">UniSoft Error<span class="o_subtitle text-muted"></span></h4>
+                    <h4 class="modal-title">UniERP Error<span class="o_subtitle text-muted"></span></h4>
                 </div>
                 <div class="o_error_detail modal-body">
                     <pre>An error occurred in a modal and I will send you back the html to try opening one on your end</pre>
