@@ -413,8 +413,8 @@
                     <label for="password" class="glass-label form-label d-flex justify-content-between">Password</label>
                     <div class="input-group mb-1">
                         <input type="password" placeholder="Enter your password" name="password" id="password" class="glass-input form-control" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
-                        <button type="button" class="glass-button btn btn-sm o_show_password">
-                            <i class="fa fa-eye"/>
+                        <button type="button" class="glass-button btn btn-sm o_show_password ms-2" aria-label="Show password" title="Show password">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
