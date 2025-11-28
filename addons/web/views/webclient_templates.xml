@@ -15,26 +15,25 @@
     </template>
 
     <template id="web.layout" name="Web layout">&lt;!DOCTYPE html&gt;
-<html t-att="html_data or {}">
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <title t-esc="UniERP"/>
-        <link type="image/x-icon" rel="shortcut icon" t-att-href="x_icon or '/web/static/img/favicon.ico'"/>
-        <script id="web.layout.odooscript" type="text/javascript">
-            var odoo = {
-                csrf_token: "<t t-esc="request.csrf_token(None)"/>",
-                debug: "<t t-esc="debug"/>",
-            };
-        </script>
-        <t t-out="head or ''"/>
-    </head>
-    <body t-att-class="body_classname">
-        <t t-out="0"/>
-    </body>
-</html>
+        <html t-att="html_data or {}">
+            <head>
+                <meta charset="utf-8"/>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+                <title t-esc="UniERP"/>
+                <link type="image/x-icon" rel="shortcut icon" t-att-href="x_icon or '/web/static/img/favicon.ico'"/>
+                <script id="web.layout.odooscript" type="text/javascript">
+                    var odoo = {
+                        csrf_token: "<t t-esc="request.csrf_token(None)"/>",
+                        debug: "<t t-esc="debug"/>",
+                    };
+                </script>
+                <t t-out="head or ''"/>
+            </head>
+            <body t-att-class="body_classname">
+                <t t-out="0"/>
+            </body>
+        </html>
     </template>
-
     <template id="web.frontend_layout" name="Frontend Layout" inherit_id="web.layout" primary="True">
       <xpath expr="//head/meta[last()]" position="after">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -56,16 +55,16 @@
         <t t-call-assets="web.assets_frontend_lazy" t-css="false" lazy_load="True"/>
       </xpath>
         <xpath expr="//t[@t-out='0']" position="replace">
-            <div id="wrapwrap" t-attf-class="#{pageName or ''}">
-                <header t-if="not no_header" id="top" data-anchor="true">
-                    <img class="img-responsive d-block mx-auto"
+            <div id="wrapwrap" t-attf-class="#{pageName or ''} glassmorphism-wrap">
+                <header t-if="not no_header" id="top" data-anchor="true" class="glassmorphism-header">
+                    <img class="img-responsive d-block mx-auto glass-logo"
                         t-attf-src="/web/binary/company_logo"
                         alt="Logo"/>
                 </header>
-                <main>
+                <main class="glassmorphism-main">
                     <t t-out="0"/>
                 </main>
-                <footer t-if="not no_footer" id="bottom" data-anchor="true" t-attf-class="bg-light o_footer">
+                <footer t-if="not no_footer" id="bottom" data-anchor="true" class="glassmorphism-footer o_footer">
                     <div id="footer"/>
                     <div t-if="not no_copyright" class="o_footer_copyright">
                         <div class="container py-3">
@@ -110,18 +109,275 @@
     <template id="web.login_layout" name="Login Layout">
         <t t-call="web.frontend_layout">
             <t t-set="html_data" t-value="{'style': 'height: 100%;'}"/>
-            <t t-set="body_classname" t-value="'bg-100'"/>
+            <t t-set="body_classname" t-value="'glassmorphism-bg'"/>
             <t t-set="no_header" t-value="True"/>
             <t t-set="no_footer" t-value="True"/>
+            
+            <style>
+                .glassmorphism-bg {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #feca57 75%, #48c9b0 100%);
+                    background-size: 400% 400%;
+                    animation: gradientShift 15s ease infinite;
+                    min-height: 100vh;
+                }
+                
+                @keyframes gradientShift {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                
+                .glass-card {
+                    background: rgba(255, 255, 255, 0.15);
+                    backdrop-filter: blur(20px);
+                    -webkit-backdrop-filter: blur(20px);
+                    border-radius: 20px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                    transition: all 0.3s ease;
+                }
+                
+                .glass-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 15px 40px 0 rgba(31, 38, 135, 0.45);
+                }
+                
+                .glass-input {
+                    background: rgba(255, 255, 255, 0.1) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                    border-radius: 12px !important;
+                    color: #333 !important;
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                    transition: all 0.3s ease !important;
+                }
+                
+                .glass-input:focus {
+                    background: rgba(255, 255, 255, 0.25) !important;
+                    border-color: rgba(255, 255, 255, 0.4) !important;
+                    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3) !important;
+                    outline: none !important;
+                }
+                
+                .glass-input::placeholder {
+                    color: rgba(51, 51, 51, 0.6) !important;
+                }
+                
+                .glass-button {
+                    background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                    border-radius: 12px !important;
+                    color: white !important;
+                    font-weight: 500 !important;
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                    transition: all 0.3s ease !important;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .glass-button:hover {
+                    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)) !important;
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4) !important;
+                }
+                
+                .glass-button::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                    transition: left 0.5s;
+                }
+                
+                .glass-button:hover::before {
+                    left: 100%;
+                }
+                
+                .glass-label {
+                    color: #333 !important;
+                    font-weight: 500 !important;
+                    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+                }
+                
+                .glass-logo {
+                    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+                    transition: transform 0.3s ease;
+                }
+                
+                .glass-logo:hover {
+                    transform: scale(1.05);
+                }
+                
+                .glass-divider {
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                    height: 1px;
+                }
+                
+                .widget-container {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 1.5rem;
+                    gap: 1rem;
+                }
+                
+                .weather-widget, .date-widget {
+                    background: rgba(255, 255, 255, 0.1);
+                    backdrop-filter: blur(15px);
+                    -webkit-backdrop-filter: blur(15px);
+                    border-radius: 15px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    padding: 0.75rem 1rem;
+                    flex: 1;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                }
+                
+                .weather-widget:hover, .date-widget:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                }
+                
+                .widget-title {
+                    font-size: 0.75rem;
+                    color: rgba(51, 51, 51, 0.7);
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                }
+                
+                .widget-content {
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    color: #333;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+                
+                .weather-icon {
+                    font-size: 1.5rem;
+                    color: #667eea;
+                }
+                
+                .date-display {
+                    font-size: 1rem;
+                    color: #333;
+                    font-weight: 500;
+                }
+                
+                @media (max-width: 576px) {
+                    .widget-container {
+                        flex-direction: column;
+                        gap: 0.75rem;
+                    }
+                }
+            </style>
 
-            <div class="container py-5">
-                <div t-attf-class="card border-0 mx-auto bg-100 {{login_card_classes}} o_database_list" style="max-width: 300px;">
-                    <div class="card-body">
-                        <div class="text-center pb-3 border-bottom mb-4">
-                            <img t-attf-src="/web/binary/company_logo{{ '?dbname='+db if db else '' }}" alt="Logo" style="max-height:120px; max-width: 100%; width:auto"/>
+            <div class="container py-5 d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+                <div t-attf-class="glass-card {{login_card_classes}} o_database_list" style="max-width: 380px; width: 100%;">
+                    <div class="card-body p-4">
+                        <div class="text-center pb-4 mb-4">
+                            <img t-attf-src="/web/binary/company_logo{{ '?dbname='+db if db else '' }}" alt="Logo" class="glass-logo" style="max-height:100px; max-width: 80%; width:auto; margin-bottom: 10px;"/>
                         </div>
+                        
+                        <!-- Weather and Date Widgets -->
+                        <div class="widget-container">
+                            <!-- Dhaka Weather Widget -->
+                            <div class="weather-widget">
+                                <div class="widget-title">Dhaka Weather</div>
+                                <div class="widget-content">
+                                    <i class="fa fa-sun-o weather-icon"></i>
+                                    <span id="weather-info">Loading...</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Today's Date Widget -->
+                            <div class="date-widget">
+                                <div class="widget-title">Today</div>
+                                <div class="widget-content">
+                                    <i class="fa fa-calendar date-icon"></i>
+                                    <span id="date-display" class="date-display">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <script><![CDATA[
+                            // Weather Widget for Dhaka
+                            async function loadDhakaWeather() {
+                                try {
+                                    const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Dhaka,BD&units=metric&appid=demo_key');
+                                    const data = await response.json();
+                                    const temp = Math.round(data.main.temp);
+                                    const description = data.weather[0].description;
+                                    const icon = data.weather[0].icon;
+                                    
+                                    const weatherIcons = {
+                                        '01d': 'fa-sun',
+                                        '01n': 'fa-moon',
+                                        '02d': 'fa-cloud-sun',
+                                        '02n': 'fa-cloud-moon',
+                                        '03d': 'fa-cloud',
+                                        '03n': 'fa-cloud',
+                                        '04d': 'fa-cloud',
+                                        '04n': 'fa-cloud',
+                                        '09d': 'fa-cloud-showers-heavy',
+                                        '09n': 'fa-cloud-showers-heavy',
+                                        '10d': 'fa-cloud-rain',
+                                        '10n': 'fa-cloud-rain',
+                                        '11d': 'fa-cloud-bolt',
+                                        '11n': 'fa-cloud-bolt',
+                                        '13d': 'fa-snowflake',
+                                        '13n': 'fa-snowflake',
+                                        '50d': 'fa-smog',
+                                        '50n': 'fa-smog'
+                                    };
+                                    
+                                    const weatherElement = document.getElementById('weather-info');
+                                    const iconElement = document.querySelector('.weather-icon');
+                                    
+                                    weatherElement.innerHTML = `${temp}°C`;
+                                    iconElement.className = `fa ${weatherIcons[icon] || 'fa-sun'} weather-icon`;
+                                } catch (error) {
+                                    // Fallback weather display
+                                    const weatherElement = document.getElementById('weather-info');
+                                    const iconElement = document.querySelector('.weather-icon');
+                                    weatherElement.innerHTML = '25°C';
+                                    iconElement.className = 'fa fa-sun weather-icon';
+                                }
+                            }
+                            
+                            // Date Widget
+                            function updateDate() {
+                                const now = new Date();
+                                const options = {
+                                    weekday: 'long',
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                };
+                                const dateStr = now.toLocaleDateString('en-US', options);
+                                document.getElementById('date-display').textContent = dateStr;
+                            }
+                            
+                            // Initialize widgets
+                            document.addEventListener('DOMContentLoaded', function() {
+                                loadDhakaWeather();
+                                updateDate();
+                                // Update weather every 10 minutes
+                                setInterval(loadDhakaWeather, 600000);
+                                // Update date every minute
+                                setInterval(updateDate, 60000);
+                            });
+                        ]]></script>
+                        
                         <t t-out="0"/>
-                        <div class="text-center small mt-4 pt-3 border-top" t-if="not disable_footer">
+                        <div class="text-center small mt-4 pt-3" t-if="not disable_footer">
+                            <div class="glass-divider"></div>
 <!--                            <t t-if="disable_database_manager">-->
 <!--                                <a class="border-end pe-2 me-1" href="/web/database/manager">Manage Databases</a>-->
 <!--                            </t>-->
@@ -141,23 +397,23 @@
                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
                 <div class="mb-3" t-if="databases and len(databases) &gt; 1">
-                    <label for="db" class="col-form-label">Database</label>
+                    <label for="db" class="glass-label">Database</label>
                     <div class="input-group">
-                        <input type="text" name="db" t-att-value="request.db" id="db" class="form-control" required="required" readonly="readonly"/>
-                        <a role="button" href="/web/database/selector" class="btn border border-start-0">Select <i class="fa fa-database" role="img" aria-label="Database" title="Database"></i></a>
+                        <input type="text" name="db" t-att-value="request.db" id="db" class="glass-input form-control" required="required" readonly="readonly"/>
+                        <a role="button" href="/web/database/selector" class="glass-button btn btn-sm">Select <i class="fa fa-database" role="img" aria-label="Database" title="Database"></i></a>
                     </div>
                 </div>
 
                 <div class="mb-3 field-login">
-                    <label for="login" class="form-label d-flex justify-content-between">Email</label>
-                    <input type="text" placeholder="Enter your email" name="login" t-att-value="login" id="login" class="form-control" required="required" autocapitalize="off" autocomplete="username"/>
+                    <label for="login" class="glass-label form-label d-flex justify-content-between">Email</label>
+                    <input type="text" placeholder="Enter your email" name="login" t-att-value="login" id="login" class="glass-input form-control" required="required" autocapitalize="off" autocomplete="username"/>
                 </div>
 
                 <div class="o_caps_lock_warning">
-                    <label for="password" class="form-label d-flex justify-content-between">Password</label>
+                    <label for="password" class="glass-label form-label d-flex justify-content-between">Password</label>
                     <div class="input-group mb-1">
-                        <input type="password" placeholder="Enter your password" name="password" id="password" class="form-control" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
-                        <button type="button" class="btn btn-sm border border-start-0 o_show_password">
+                        <input type="password" placeholder="Enter your password" name="password" id="password" class="glass-input form-control" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
+                        <button type="button" class="glass-button btn btn-sm o_show_password">
                             <i class="fa fa-eye"/>
                         </button>
                     </div>
@@ -171,9 +427,9 @@
                 </p>
 
                 <div class="oe_login_buttons text-center d-grid mb-1 pt-3">
-                    <button type="submit" class="btn btn-primary">Log in</button>
+                    <button type="submit" class="glass-button btn btn-primary">Log in</button>
                     <t t-if="debug">
-                        <button type="submit" name="redirect" value="/web/become" class="btn btn-link btn-sm">Log in as superuser</button>
+                        <button type="submit" name="redirect" value="/web/become" class="glass-button btn btn-link btn-sm">Log in as superuser</button>
                     </t>
                     <t t-call="web.login_oauth"/>
                 </div>
@@ -187,12 +443,12 @@
 
     <template id="web.login_successful" name="Login successful">
         <t t-call="web.login_layout">
-            <div class="oe_login_form">
+            <div class="oe_login_form glass-card p-4">
                 <p>
                     You are logged in.
                 </p>
                 <div t-attf-class="clearfix oe_login_buttons text-center mb-1 pt-3">
-                    <a class="btn btn-primary btn-block" href="/web/session/logout">Log out</a>
+                    <a class="glass-button btn btn-primary btn-block" href="/web/session/logout">Log out</a>
                 </div>
             </div>
         </t>
@@ -317,7 +573,7 @@
                     document.addEventListener("DOMContentLoaded", () => {
                         const cookies = document.cookie.split(';').map(c => c.trim());
                         if (cookies.includes('color_scheme=dark')) {
-                            document.body.style.backgroundColor = "#262A36";
+                            document.body.style.background = "linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #2c3e50 50%, #34495e 75%, #2c3e50 100%)";
                             document.body.style.color = "#FFFFFF";
                         }
                     });
@@ -328,7 +584,9 @@
                     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
                     padding:0;
                     margin:0;
-                    background-color: #fff;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #feca57 75%, #48c9b0 100%);
+                    background-size: 400% 400%;
+                    animation: gradientShift 15s ease infinite;
                     color: rgb(17, 24, 39);
                     display: flex;
                     align-items: center;
@@ -338,23 +596,76 @@
                     width: 100vw;
                     user-select: none;
                     }
+                    
+                    @keyframes gradientShift {
+                        0% { background-position: 0% 50%; }
+                        50% { background-position: 100% 50%; }
+                        100% { background-position: 0% 50%; }
+                    }
+                    
                     .card {
                     width: 80%;
+                    background: rgba(255, 255, 255, 0.15);
+                    backdrop-filter: blur(20px);
+                    -webkit-backdrop-filter: blur(20px);
+                    border-radius: 20px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                    padding: 2rem;
+                    transition: all 0.3s ease;
                     }
+                    
+                    .card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 15px 40px 0 rgba(31, 38, 135, 0.45);
+                    }
+                    
                     .card img {
                     width: 96px;
                     height: auto;
-                    filter: grayscale(.6);
+                    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+                    transition: transform 0.3s ease;
                     }
+                    
+                    .card img:hover {
+                        transform: scale(1.05);
+                    }
+                    
                     .card button {
-                    background-color: #714B67;
+                    background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
                     color: #FFFFFF;
-                    border: 1px solid #714B67;
-                    border-radius: .25rem;
-                    padding: .5rem 1rem;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 12px;
+                    padding: .75rem 1.5rem;
                     cursor: pointer;
                     font-size: 1.2rem;
                     font-weight: 500;
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                    transition: all 0.3s ease;
+                    position: relative;
+                    overflow: hidden;
+                    }
+                    
+                    .card button:hover {
+                        background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+                        transform: translateY(-2px);
+                        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+                    }
+                    
+                    .card button::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: -100%;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                        transition: left 0.5s;
+                    }
+                    
+                    .card button:hover::before {
+                        left: 100%;
                     }
                 </style>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
