@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <!-- Help Sidebar Template -->
+    <t t-name="HelpSidebar">
+        <div class="o_help_sidebar">
+            <div class="o_help_branding">
+                <p class="o_help_branding_text">Powered by UniERP Help System</p>
+                <a href="https://www.uslbd.com/help" target="_blank" class="o_help_branding_link">Visit UniERP Documentation</a>
+            </div>
+            
+            <div class="o_help_categories">
+                <!-- Help categories will be dynamically rendered here -->
+            </div>
+        </div>
+    </t>
+    
+    <!-- Context Help Template -->
+    <t t-name="ContextHelp">
+        <div class="o_context_help">
+            <div class="o_context_help_title">UniERP Context Help</div>
+            <div class="o_context_help_content">
+                <!-- Context-specific help content will be rendered here -->
+                <p>For detailed help about this specific UniERP feature, please refer to the <a href="https://www.uslbd.com/documentation" target="_blank">UniERP Documentation</a>.</p>
+            </div>
+        </div>
+    </t>
+    
+    <!-- Search Help Template -->
+    <t t-name="SearchHelp">
+        <div class="o_search_help">
+            <div class="o_search_help_title">UniERP Search Help</div>
+            <div class="o_search_help_content">
+                <input type="text" class="o_search_input" placeholder="Search UniERP help..."/>
+                <button class="o_search_button">Search</button>
+                <div class="o_search_results">
+                    <!-- Search results will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </t>
+    
+    <!-- Help Item Template -->
+    <t t-name="HelpItem">
+        <div class="o_help_item">
+            <h4 class="o_help_item_title" t-esc="title"/>
+            <a class="o_help_item_link" t-att-href="url" t-esc="url" target="_blank">Link Text</a>
+            <p class="o_help_item_description" t-esc="description">Description</p>
+        </div>
+    </t>
+    
+    <!-- Help Category Template -->
+    <t t-name="HelpCategory">
+        <div class="o_help_category">
+            <h3 class="o_help_category_title" t-esc="title"/>
+            <button class="o_help_category_toggle" t-on-click="toggle">
+                <i class="fa fa-chevron-down"/>
+            </button>
+            <div class="o_help_category_content">
+                <!-- Help items will be rendered here -->
+            </div>
+        </div>
+    </t>
+</templates>
