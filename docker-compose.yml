@@ -1,0 +1,59 @@
+services:
+  db:
+    image: postgres:15
+    container_name: unierp_db
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: unierp
+      POSTGRES_PASSWORD: unierp
+      POSTGRES_INITDB_ARGS: "-E UTF8"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - unierp_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U unierp"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  unierp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: unierp_app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      HOST: db
+      PORT: 8019
+      LONGPOLLING_PORT: 8072
+      WORKERS: 4
+    ports:
+      - "8019:8019"
+      - "8072:8072"
+    volumes:
+      - unierp_data:/var/lib/unierp
+      - unierp_logs:/var/log/unierp
+      - ./addons:/opt/unierp/addons
+      - ./unierp.conf:/etc/unierp/unierp.conf:ro
+    networks:
+      - unierp_network
+    restart: unless-stopped
+    command: ["python3", "/opt/unierp/unierp-bin", "-c", "/etc/unierp/unierp.conf", "--db_host=db", "--db_port=5432", "--db_user=unierp", "--db_password=unierp"]
+
+volumes:
+  postgres_data:
+    driver: local
+  unierp_data:
+    driver: local
+  unierp_logs:
+    driver: local
+
+networks:
+  unierp_network:
+    driver: bridge
