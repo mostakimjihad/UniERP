@@ -81,7 +81,7 @@
             <field name="tip_description" type="html">
 <div>
     <p class="tip_title">Tip: Turn a selection of opportunities into a map</p>
-    <p class="tip_content">Did you know you can turn a list of opportunities into a map view, using the top-right map icon? A lot of screens in Odoo can be turned into a map: tasks, contacts, delivery orders, etc.</p>
+    <p class="tip_content">Did you know you can turn a list of opportunities into a map view, using the top-right map icon? A lot of screens in UniERP can be turned into a map: tasks, contacts, delivery orders, etc.</p>
     <img src="https://download.odoocdn.com/digests/crm/static/src/img/milk-mapview-toggle.gif" width="540" class="illustration_border" />
 </div>
             </field>

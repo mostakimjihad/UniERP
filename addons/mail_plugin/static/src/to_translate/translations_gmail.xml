@@ -33,7 +33,7 @@
     <string>Email already logged on the contact</string>
     <string>This contact does not exist in the Odoo database.</string>
     <string>Can not save the contact</string>
-    <string>Save in Odoo</string>
+    <string>Save in UniERP</string>
     <string>Log email</string>
     <string>Buy new credits</string>
     <string>Could not connect to database. Try to log out and in.</string>
@@ -46,7 +46,7 @@
     <string>Something bad happened. Please, try again later.</string>
     <string>Invalid URL</string>
     <string>No company attached to this contact.</string>
-    <string>Attachments could not be logged in Odoo because their total size exceeded the allowed maximum.</string>
+    <string>Attachments could not be logged in UniERP because their total size exceeded the allowed maximum.</string>
     <string>Logged from</string>
     <string>Gmail Inbox</string>
     <string>From:</string>
