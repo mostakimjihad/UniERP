@@ -28,12 +28,12 @@ class ResUsers(models.Model):
     can_edit_role = fields.Boolean(compute="_compute_can_edit_role")
     notification_type = fields.Selection([
         ('email', 'By Emails'),
-        ('inbox', 'In Odoo')],
+        ('inbox', 'In UniERP')],
         'Notification', required=True, default='email',
         compute='_compute_notification_type', inverse='_inverse_notification_type', store=True,
         help="Policy on how to handle Chatter notifications:\n"
              "- By Emails: notifications are sent to your email address\n"
-             "- In Odoo: notifications appear in your Odoo Inbox")
+             "- In UniERP: notifications appear in your UniERP Inbox")
     presence_ids = fields.One2many("mail.presence", "user_id", groups="base.group_system")
     # OOO management
     out_of_office_from = fields.Datetime()

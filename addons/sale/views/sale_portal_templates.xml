@@ -260,11 +260,11 @@
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div>
-                                    <h5>Want to import this document in Odoo?</h5>
-                                    <p>Drag and drop the request for quotation PDF file into your list of quotations in Odoo. Enjoy the automation!</p>
+                                    <h5>Want to import this document in UniERP?</h5>
+                                    <p>Drag and drop the request for quotation PDF file into your list of quotations in UniERP. Enjoy the automation!</p>
                                 </div>
                                 <div>
-                                    <h5>Not using Odoo?</h5>
+                                    <h5>Not using UniERP?</h5>
                                     <div class="input-group mb-3 w-50">
                                         <t t-set="base_address" t-value="sale_order.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
                                         <t t-set="doc_url" t-value="base_address + '/my/orders/' + str(sale_order.id) + '/download_edi?' + str(keep_query())"/>

@@ -139,5 +139,4 @@ registry
     .add("shortcuts", shortCutsItem)
     .add("separator", separator)
     .add("preferences", preferencesItem)
-    .add("install_pwa", installPWAItem)
     .add("log_out", logOutItem);

@@ -22,7 +22,7 @@
                            nolabel="1"
                            required="account_peppol_proxy_state in ('sender', 'smp_registration', 'receiver')"/>
                 </group>
-                <group string="Receive your electronic invoices in Odoo" invisible="account_peppol_proxy_state != 'sender'">
+                <group string="Receive your electronic invoices in UniERP" invisible="account_peppol_proxy_state != 'sender'">
                     <div class="text-justify text-muted" colspan="2">
                         Some service support migration keys. If this is your case you can enter your migration key below.
                         If not, you should de-register from your current service provider and register with Odoo afterward.

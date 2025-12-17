@@ -89,7 +89,7 @@
                             <label for="content_header"/>
                             <div class="d-flex">
                                 <field name="content_header_dyn" title="Dynamic Field?"/>
-                                <field name="content_header" invisible="content_header_dyn" placeholder="e.g. Join Odoo Experience 2024"/>
+                                <field name="content_header" invisible="content_header_dyn" placeholder="e.g. Join UniERP Experience 2024"/>
                                 <field name="content_header_path" invisible="not content_header_dyn" placeholder="Select a field" widget="field_selector" options="{'model': 'res_model'}"/>
                                 <field name="content_header_color" widget="color" class="ms-auto" style="min-width: 40px; max-width: 40px;"/>
                             </div>

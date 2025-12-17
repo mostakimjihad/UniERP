@@ -49,3 +49,7 @@ html, body {
             backdrop-filter: blur(3px);
             -webkit-backdrop-filter: blur(3px);
         }
+
+        .dropdown-menu.js_usermenu.dropdown-menu-end.show {
+            background: transparent;
+            }
